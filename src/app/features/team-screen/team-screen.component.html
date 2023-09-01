@@ -1,0 +1,11 @@
+<div class="team">
+  <div class="_container_small">
+    <div class="team__header">
+      <h2>{{'teamScreenTitle' | translate}}</h2>
+      <p>{{'teamScreenSubtitle' | translate}}</p>
+    </div>
+    <div class="team__teammates">
+      <app-teammate *ngFor="let teammate of team" [teammate]="teammate"></app-teammate>
+    </div>
+  </div>
+</div>

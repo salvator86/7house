@@ -1,0 +1,39 @@
+.header {
+  padding-top: 48px;
+  display: grid;
+  grid-template-columns: 18% 44% 38%;
+  &__logo {
+    width: 120px;
+    height: 24px;
+  }
+  &__navbar {
+    display: flex;
+    list-style-type: none;
+    gap: 40px;
+    align-items: center;
+    font-size: 18px;
+    line-height: 28px;
+  }
+  &__tools {
+    display: flex;
+    justify-content: flex-end;
+    &-block {
+      padding-right: 40px;
+      &-select {
+        font-family: 'Mont', sans-serif;
+        background: none;
+        color: white;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        position: relative;
+      }
+    }
+    &-phone {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      border-bottom: 1px solid white;
+    }
+  }
+}

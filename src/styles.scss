@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Mont';
+  src: url('/assets/fonts/mont/Mont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/assets/fonts/mont/Mont-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/assets/fonts/mont/Mont-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Mont', sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+._container {
+  max-width: 1248px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+._container_small {
+  max-width: 1056px;
+  padding: 0 20px;
+  margin: 0 auto;
+}

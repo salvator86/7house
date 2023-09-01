@@ -1,0 +1,20 @@
+<div class="benefits">
+  <div class="_container_small">
+    <div class="benefits__header">
+      <div class="benefits__header-title">
+        <h2 class="benefits__header-title-text">{{'providedScreenTitle' | translate}}</h2>
+      </div>
+      <div class="benefits__header-content">
+        <p class="benefits__header-content-subtitle">
+          {{'providedTitle' | translate}}
+        </p>
+        <p class="benefits__header-content-description">
+          {{'providedSubtitle' | translate}}
+        </p>
+      </div>
+    </div>
+    <div class="benefits__list">
+      <app-benefit *ngFor="let benefit of benefits" [benefit]="benefit"></app-benefit>
+    </div>
+  </div>
+</div>

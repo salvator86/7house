@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "7house",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

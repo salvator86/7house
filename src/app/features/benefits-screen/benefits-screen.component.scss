@@ -1,0 +1,52 @@
+@import "src/assets/variables/colors";
+
+.benefits {
+  background-color: $darkgrey;
+  height: 824px;
+  &__header {
+    height: 136px;
+    padding-top: 96px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    &-title {
+      margin-top: 8px;
+      border-left: 4px solid $gold;
+      width: 480px;
+      height: 72px;
+      box-sizing: border-box;
+      &-text {
+        padding-left: 8px;
+        font: {
+          size: 56px;
+          weight: bold;
+        }
+        width: 468px;
+        height: 64px;
+      }
+    }
+    &-content {
+      width: 480px;
+      &-subtitle {
+        line-height: 32px;
+        font: {
+          size: 24px;
+          weight: 600;
+        }
+      }
+      &-description {
+        margin-top: 16px;
+        font-size: 18px;
+        line-height: 28px;
+        opacity: 80%;
+      }
+    }
+  }
+  &__list {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    grid-template-rows: repeat(2, 200px);
+    gap: 48px;
+  }
+}

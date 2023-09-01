@@ -1,0 +1,24 @@
+@import "src/assets/variables/colors";
+
+.services-container {
+  height: 632px;
+  padding-top: 104px;
+  box-sizing: border-box;
+  & h2 {
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-left: 8px;
+    border-left: 4px solid $gold;
+    height: 72px;
+    font: {
+      size: 56px;
+      weight: bold;
+    }
+  }
+  &__list {
+    margin: 48px auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 240px);
+    gap: 32px;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="services-container">
+  <div class="_container">
+    <h2 class="_container_small">{{'servicesBlockTitle' | translate}}</h2>
+    <div class="services-container__list _container_small">
+      <app-service *ngFor="let service of services" [service]="service"></app-service>
+    </div>
+  </div>
+</div>

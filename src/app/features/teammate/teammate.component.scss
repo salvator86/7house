@@ -1,0 +1,76 @@
+@import "src/assets/variables/colors";
+
+.teammate {
+  height: 100%;
+  position: relative;
+  &__container {
+    position: absolute;
+    width: 56px;
+    bottom: 24px;
+    right: 24px;
+    height: 56px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+  }
+  &__block {
+    width: 56px;
+    background-color: white;
+    transition: .5s;
+    position: absolute;
+    bottom: 0;
+    &-info {
+      width: 200px;
+      min-height: 56px;
+      height: fit-content;
+      transition: 1.5s;
+      opacity: 0;
+      &-content {
+        width: 200px;
+        padding: 16px 0 16px 16px;
+        & p:first-of-type {
+          font: {
+            size: 24px;
+            weight: 600;
+          }
+          line-height: 32px;
+          margin-bottom: 8px;
+        }
+        & p:last-of-type {
+          font-size: 16px;
+          line-height: 24px;
+          color: $grey;
+        }
+      }
+    }
+    &-button {
+      transform: rotate(0);
+      transition: .5s;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+    }
+    &-button:after {
+      content: "";
+      width: 14px;
+      height: 2px;
+      background-color: $gold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &-button:before {
+      content: "";
+      width: 2px;
+      height: 14px;
+      background-color: $gold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

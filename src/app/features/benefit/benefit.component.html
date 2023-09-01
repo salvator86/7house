@@ -1,0 +1,8 @@
+<div [ngStyle]="getOfferBackground(benefit.imgURL)"
+     class="benefit"
+     (mouseover)="isHover = true"
+     (mouseleave)="isHover = false"
+>
+  <p>{{benefit.title | translate}}</p>
+  <div class="benefit__dark" *ngIf="!isHover" [@hover]="isHover && 'over'"></div>
+</div>

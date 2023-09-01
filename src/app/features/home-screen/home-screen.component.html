@@ -1,0 +1,42 @@
+<div *ngIf="homeScreenBackgrounds"
+     [ngStyle]="getBackground()"
+     class="home-container">
+  <div class="_container">
+    <app-header></app-header>
+    <div class="home-container__text _container_small">
+      <h1 class="home-container__text-title">{{'homeScreenTitle' | translate}}</h1>
+      <h2 class="home-container__text-subtitle">{{'homeScreenSubtitle' | translate}}</h2>
+      <button class="home-container__text-button"
+              (mouseover)="isHover = true"
+              (mouseleave)="isHover = false"
+      >
+        <div [@contactUs]="isHover && 'over'" class="home-container__text-button-border"></div>
+        {{'contactUs' | translate}}
+      </button>
+    </div>
+    <div class="home-container__footer">
+      <div class="home-container__footer-contacts">
+        <a href="">Facebook</a>
+        <a href="">Instagram</a>
+      </div>
+      <div class="home-container__footer-buttons">
+        <button>
+          <span></span>
+        </button>
+        <button>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="home-container__carousel">
+    <ng-container *ngIf="homeScreenBackgrounds">
+      <ng-container *ngFor="let screen of homeScreenBackgrounds; let i = index">
+        <div class="home-container__carousel-item">
+          <p>0{{i + 1}}</p>
+          <div class="home-container__carousel-item-line"></div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

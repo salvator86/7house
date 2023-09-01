@@ -1,0 +1,15 @@
+<div class="teammate" [ngStyle]="getBackgroundTeammate(teammate.imgURL)">
+  <div class="teammate__container" [@readmore]="isReadable ? 'container': 'container-out'">
+    <div class="teammate__block" (click)="isReadable = !isReadable" [@readmore]="isReadable ? 'info' : 'info-out'">
+      <div class="teammate__block-info" [@readmore]="isReadable && 'text'">
+        <div class="teammate__block-info-content" *ngIf="isReadable">
+          <p>{{teammate.name | translate}}</p>
+          <p>{{teammate.responsibility | translate}}</p>
+        </div>
+      </div>
+      <div class="teammate__block-button" [@readmore]="isReadable && 'plus'">
+        <div class="teammate__button-icon"></div>
+      </div>
+    </div>
+  </div>
+</div>

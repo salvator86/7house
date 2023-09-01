@@ -1,0 +1,39 @@
+@import "src/assets/variables/colors";
+
+.team {
+  height: 656px;
+  &__header {
+    height: 72px;
+    border-left: 4px solid $gold;
+    margin-top: 96px;
+    padding-left: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    & h2 {
+      height: 64px;
+      line-height: 64px;
+      font: {
+        size: 56px;
+        weight: bold;
+      }
+    }
+    & p {
+      width: 480px;
+      height: 64px;
+      font: {
+        weight: 600;
+        size: 24px;
+      }
+      line-height: 32px;
+    }
+  }
+  &__teammates {
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    height: 440px;
+    gap: 48px;
+    margin-top: 48px;
+  }
+}

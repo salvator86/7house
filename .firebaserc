@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "house-c2f86": {
+      "hosting": {
+        "7house": [
+          "house-c2f86"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "house-c2f86"
+  }
+}
