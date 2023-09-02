@@ -1,0 +1,36 @@
+@import "src/assets/variables/colors";
+
+@mixin buttonArrow {
+  height: 56px;
+  width: 56px;
+  background: none;
+}
+
+@mixin arrow {
+  width: 16px;
+  height: 2px;
+  background-color: white;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+@mixin arrowLeft {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 0;
+  top: -5px;
+  transform: rotate(45deg);
+}
+
+@mixin arrowRight {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -5px;
+  left: 4px;
+  transform: rotate(315deg);
+}

@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {Team} from "../../core/models/team";
-import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-teammate',
@@ -41,20 +41,17 @@ import {animate, keyframes, state, style, transition, trigger} from "@angular/an
         animate('1.5s'),
       ]),
       transition(':leave', [
-        animate('1.5', style({ opacity: 0 })),
+        animate('1.5s', style({ opacity: 0 })),
       ]),
     ])
   ]
 })
-export class TeammateComponent implements OnInit {
+export class TeammateComponent {
 
   @Input() teammate: Team;
   isReadable: boolean = false;
 
-  ngOnInit(): void {
-  }
-
-  getBackgroundTeammate(imgURL: string) {
+  getBackgroundTeammate(imgURL: string): {'background-image': string} {
     return {
       'background-image': `url(${imgURL})`
     };

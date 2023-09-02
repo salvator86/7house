@@ -1,6 +1,5 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FirebaseService} from "../../core/services/firebase/firebase.service";
 import {HeaderComponent} from "../header/header.component";
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {animate, state, style, transition, trigger} from "@angular/animations";
@@ -24,17 +23,10 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     ]),
   ],
 })
-export class HomeScreenComponent implements OnInit {
+export class HomeScreenComponent {
 
-  dbService: FirebaseService = inject(FirebaseService);
-  homeScreenBackgrounds: any;
+  @Input() homeScreenBackgrounds: any;
   isHover: boolean = false;
-
-  ngOnInit(): void {
-    this.dbService.homeScreenBackgrounds.subscribe(data => {
-      this.homeScreenBackgrounds = data;
-    });
-  }
 
   getBackground(): any {
     return {

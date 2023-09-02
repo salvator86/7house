@@ -1,4 +1,5 @@
 @import "src/assets/variables/colors";
+@import "src/assets/styles/mixins";
 
 .home-container {
   height: 100vh;
@@ -62,10 +63,8 @@
       right: 80px;
       bottom: 28px;
       & button {
-        height: 56px;
-        width: 56px;
+        @include buttonArrow;
         border: 1px solid rgba(256, 256, 256, 0.5);
-        background: none;
       }
       button:last-child {
         position: absolute;
@@ -92,34 +91,18 @@
         }
       }
       button span {
-        width: 16px;
-        height: 2px;
+        @include arrow;
         background-color: white;
-        display: block;
-        margin: 0 auto;
-        position: relative;
       }
       button:first-child span:before {
-        content: "";
-        width: 10px;
-        height: 10px;
+        @include arrowLeft;
         border-bottom: 2px solid white;
         border-left: 2px solid white;
-        position: absolute;
-        left: 0;
-        top: -5px;
-        transform: rotate(45deg);
       }
       button:last-child span:before {
+        @include arrowRight;
         border-bottom: 2px solid white;
-        content: "";
-        width: 10px;
-        height: 10px;
         border-right: 2px solid white;
-        position: absolute;
-        top: -5px;
-        left: 4px;
-        transform: rotate(315deg);
       }
     }
   }

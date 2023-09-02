@@ -19,11 +19,13 @@
   font-style: normal;
 }
 
+@import "src/assets/variables/colors";
+
 body {
   font-family: 'Mont', sans-serif;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -38,4 +40,12 @@ body {
   max-width: 1056px;
   padding: 0 20px;
   margin: 0 auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
 }

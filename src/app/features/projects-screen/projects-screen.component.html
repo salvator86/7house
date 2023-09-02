@@ -1,0 +1,53 @@
+<div class="projects">
+  <div class="projects__dark"></div>
+  <div class="_container_small">
+    <div class="projects__title">
+      <div class="projects__title-block">
+        <h2 class="projects__title-block-text">{{'processScreenTitle' | translate}}</h2>
+      </div>
+    </div>
+    <div class="projects__first d-flex space-between">
+      <div class="process">
+        <p>01</p>
+        <p>{{'process1' | translate}}</p>
+      </div>
+      <img class="process-img" src="assets/images/designing.png" alt="designing">
+    </div>
+    <div class="projects__second d-flex space-between">
+      <img class="process-img" src="assets/images/release.png" alt="release">
+      <div class="process">
+        <p>02</p>
+        <p>{{'process2' | translate}}</p>
+      </div>
+    </div>
+    <div class="projects__third">
+      <div class="process">
+        <p>03</p>
+        <p>{{'process3' | translate}}</p>
+      </div>
+      <img src="assets/images/applying-project.png" alt="applying-project">
+    </div>
+    <div class="projects__list">
+      <div class="projects__list-title d-flex space-between">
+        <h2>{{'ourProjectsScreenTitle' | translate}}</h2>
+        <div class="projects__list-title-buttons">
+          <button (click)="scrollLeft()"
+                  [disabled]="isLeftButtonDisabled">
+            <span></span>
+          </button>
+          <button (click)="scrollRight()"
+                  [disabled]="isRightButtonDisabled">
+            <span></span>
+          </button>
+        </div>
+      </div>
+      <div class="projects__list-block">
+        <div class="projects__list-block-items d-flex space-between" #itemsContainer>
+          <app-project *ngFor="let project of projects" [project]="project"></app-project>
+          <app-project *ngFor="let project of projects" [project]="project"></app-project>
+        </div>
+        <div class="projects__list-block-additional"></div>
+      </div>
+    </div>
+  </div>
+</div>
