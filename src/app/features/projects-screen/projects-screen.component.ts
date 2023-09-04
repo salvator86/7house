@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild, ChangeDetectorRef } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {ProjectComponent} from "../project/project.component";
@@ -18,7 +18,7 @@ export class ProjectsScreenComponent implements AfterViewInit {
   isLeftButtonDisabled: boolean = true;
   isRightButtonDisabled: boolean = false;
 
-  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
     this.itemsContainer.nativeElement.addEventListener('scroll', this.updateScrollButtons.bind(this));

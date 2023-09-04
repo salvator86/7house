@@ -160,7 +160,6 @@
         overflow-x: hidden;
         gap: 96px;
         scroll-behavior: smooth;
-        transition: scroll 0.3s ease-in-out;
         & app-project:last-of-type {
           margin-right: 192px;
         }

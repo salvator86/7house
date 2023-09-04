@@ -8,6 +8,8 @@ import {BenefitsScreenComponent} from "../../features/benefits-screen/benefits-s
 import {TeamScreenComponent} from "../../features/team-screen/team-screen.component";
 import {ProjectsScreenComponent} from "../../features/projects-screen/projects-screen.component";
 import {FirebaseService} from "../services/firebase/firebase.service";
+import {ContactsScreenComponent} from "../../features/contacts-screen/contacts-screen.component";
+import {FooterComponent} from "../../features/footer/footer.component";
 
 @Component({
   selector: 'app-home-page',
@@ -22,6 +24,8 @@ import {FirebaseService} from "../services/firebase/firebase.service";
     BenefitsScreenComponent,
     TeamScreenComponent,
     ProjectsScreenComponent,
+    ContactsScreenComponent,
+    FooterComponent,
     NgIf,
   ]
 })

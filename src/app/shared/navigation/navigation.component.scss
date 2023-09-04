@@ -1,0 +1,17 @@
+@import "src/assets/variables/colors";
+
+.navbar {
+  display: flex;
+  list-style-type: none;
+  gap: 40px;
+  align-items: center;
+  font-size: 18px;
+  line-height: 28px;
+  & li {
+    transition: .3s;
+    cursor: pointer;
+    &:hover {
+      color: $gold;
+    }
+  }
+}

@@ -1,18 +1,13 @@
+@import "src/assets/variables/colors";
+
 .header {
   padding-top: 48px;
   display: grid;
   grid-template-columns: 18% 44% 38%;
+  scroll-behavior: smooth;
   &__logo {
     width: 120px;
     height: 24px;
-  }
-  &__navbar {
-    display: flex;
-    list-style-type: none;
-    gap: 40px;
-    align-items: center;
-    font-size: 18px;
-    line-height: 28px;
   }
   &__tools {
     display: flex;
@@ -34,6 +29,12 @@
       align-items: center;
       font-size: 18px;
       border-bottom: 1px solid white;
+      transition: .3s;
+      cursor: pointer;
+      &:hover {
+        color: $gold;
+        border-color: $gold;
+      }
     }
   }
 }
