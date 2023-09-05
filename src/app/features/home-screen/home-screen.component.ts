@@ -20,17 +20,17 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
 
   changeToPrevBackground(): void {
     this.currentBackground--;
-    this.startInterval()
+    this.startInterval();
   }
 
   changeToNextBackground(): void {
     this.currentBackground++;
-    this.startInterval()
+    this.startInterval();
   }
 
   changeBackground(i: number): void {
     this.currentBackground = i;
-    this.startInterval()
+    this.startInterval();
   }
 
   startInterval() {
@@ -46,7 +46,7 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (this.homeScreenBackgrounds.length > 1) {
-      this.startInterval()
+      this.startInterval();
     }
   }
 
@@ -57,7 +57,7 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
   getBackground(): any {
     return {
       'background': `linear-gradient(rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)), url(${this.homeScreenBackgrounds[this.currentBackground].imgURL})`
+      rgba(0, 0, 0, 0.6)), url(${this.homeScreenBackgrounds[this.currentBackground].imgURL})`,
     }
   }
 }
