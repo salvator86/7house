@@ -3,7 +3,8 @@ import {TranslationService} from "../services/translation/translation.service";
 
 @Pipe({
   name: 'translate',
-  standalone: true
+  standalone: true,
+  pure: false,
 })
 export class TranslatePipe implements PipeTransform {
 

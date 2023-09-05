@@ -14,15 +14,8 @@
     justify-content: flex-end;
     &-block {
       padding-right: 40px;
-      &-select {
-        font-family: 'Mont', sans-serif;
-        background: none;
-        color: white;
-        font-size: 18px;
-        border: none;
-        outline: none;
-        position: relative;
-      }
+      display: flex;
+      align-items: center;
     }
     &-phone {
       display: flex;

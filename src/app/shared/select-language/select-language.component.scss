@@ -1,0 +1,27 @@
+@import "src/assets/variables/colors";
+
+.select-lang {
+  position: relative;
+  cursor: pointer;
+  width: 80px;
+  &__current-lang {
+    width: 100%;
+    transition: .3s;
+    display: flex;
+    justify-content: center;
+    &:hover {
+      color: $gold;
+    }
+  }
+  &__another-lang {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    transition: .3s;
+    height: 28px;
+    &:hover {
+      color: $gold;
+    }
+  }
+}

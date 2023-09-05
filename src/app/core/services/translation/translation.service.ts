@@ -8,7 +8,7 @@ import {langEn} from '../../../../assets/languages/en'
 })
 export class TranslationService {
 
-  currentLanguage: Languages = Languages.ua;
+  currentLanguage: string = Languages.ua;
   languages: any = {
     ua: langUa,
     en: langEn,
@@ -16,6 +16,10 @@ export class TranslationService {
 
   get lang() {
     return this.languages[this.currentLanguage];
+  }
+
+  changeLanguage() {
+    this.currentLanguage = this.currentLanguage === 'ua' ? 'en' : 'ua';
   }
 
 }
