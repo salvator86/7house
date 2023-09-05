@@ -32,4 +32,10 @@ export class SelectLanguageComponent {
     this.isAnotherLangShowed = !this.isAnotherLangShowed;
   }
 
+  arrowPosition() {
+    return this.isAnotherLangShowed
+      ? {transform: 'rotate(45deg)', 'margin-bottom': '0px'}
+      : {transform: 'rotate(225deg)', 'margin-bottom': '5px'}
+  }
+
 }

@@ -13,11 +13,11 @@
         <a href="">Facebook</a>
         <a href="">Instagram</a>
       </div>
-      <div class="home-container__footer-buttons">
-        <button>
+      <div class="home-container__footer-buttons d-flex space-between">
+        <button (click)="changeToPrevBackground()" [disabled]="currentBackground === 0">
           <span></span>
         </button>
-        <button>
+        <button (click)="changeToNextBackground()" [disabled]="homeScreenBackgrounds.length - 1 === currentBackground">
           <span></span>
         </button>
       </div>
@@ -26,9 +26,9 @@
   <div class="home-container__carousel">
     <ng-container *ngIf="homeScreenBackgrounds">
       <ng-container *ngFor="let screen of homeScreenBackgrounds; let i = index">
-        <div class="home-container__carousel-item">
-          <p>0{{i + 1}}</p>
-          <div class="home-container__carousel-item-line"></div>
+        <div class="home-container__carousel-item" (click)="changeBackground(i)">
+          <p [ngStyle]="currentBackground === i ? {opacity: '100%'} : {opacity: '50%'}">0{{i + 1}}</p>
+          <div [hidden]="currentBackground !== i" class="home-container__carousel-item-line"></div>
         </div>
       </ng-container>
     </ng-container>

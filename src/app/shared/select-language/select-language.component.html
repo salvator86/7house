@@ -1,7 +1,10 @@
 <div (click)="showAnotherLanguage()" class="select-lang" #selectLang>
-  <div class="select-lang__current-lang">{{translationService.currentLanguage === 'ua' ? 'Укр' : 'English'}}</div>
+  <div class="select-lang__block">
+    <div class="select-lang__current-lang">{{translationService.currentLanguage === 'ua' ? 'Укр' : 'English'}}</div>
+    <div class="select-lang__arrow" [ngStyle]="arrowPosition()"></div>
+  </div>
   <div *ngIf="isAnotherLangShowed"
        class="select-lang__another-lang"
-       [ngStyle]="section === 'header' ? {top: '30px'} : {bottom: '30px'} "
-     (click)="changeLanguage()">{{translationService.currentLanguage === 'ua' ? 'English' : 'Укр'}}</div>
+       [ngStyle]="section === 'header' ? {top: '30px'} : {bottom: '30px'}"
+       (click)="changeLanguage()">{{translationService.currentLanguage === 'ua' ? 'English' : 'Укр'}}</div>
 </div>
