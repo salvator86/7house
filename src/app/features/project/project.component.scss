@@ -3,7 +3,10 @@
 .project {
   height: 100%;
   width: 480px;
+  transition: .3s;
+  cursor: pointer;
   & img {
+    transition: .3s;
     width: 100%;
     height: 320px;
   }
@@ -11,6 +14,7 @@
     margin-top: 28px;
     width: 384px;
     &-title {
+      transition: .3s;
       line-height: 32px;
       font: {
         size: 24px;
@@ -18,9 +22,19 @@
       }
     }
     &-subtitle {
+      transition: .3s;
       margin-top: 8px;
       color: $grey;
       white-space: pre-line;
     }
+  }
+  &:hover img {
+    box-shadow: 8px 8px 1px $gold;
+  }
+  &:hover &__content-title {
+    color: $gold;
+  }
+  &:hover &__content-subtitle {
+    color: black;
   }
 }

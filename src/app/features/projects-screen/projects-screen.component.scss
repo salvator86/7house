@@ -111,8 +111,19 @@
         & button {
           @include buttonArrow;
           border: 1px solid $gold;
+          &:hover {
+            background-color: $gold;
+          }
+          &:hover span {
+            background-color: white;
+          }
+          &:hover span:before {
+            border-color: white !important;
+          }
         }
         & button[disabled]:first-child {
+          background: none;
+          cursor: auto;
           & span {
             background-color: $semiGold;
             &:before {
@@ -123,6 +134,8 @@
           border-color: $semiGold;
         }
         & button[disabled]:last-child {
+          background: none;
+          cursor: auto;
           & span {
             background-color: $semiGold;
             &:before {
@@ -138,6 +151,7 @@
         & span {
           @include arrow;
           background-color: $gold;
+          transition: .3s;
         }
         button:first-child span:before {
           @include arrowLeft;

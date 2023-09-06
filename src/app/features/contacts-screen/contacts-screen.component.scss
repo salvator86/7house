@@ -39,6 +39,9 @@
     width: auto;
     height: 56px;
     flex-direction: column;
+    & p:first-of-type {
+      margin-right: 40px;
+    }
   }
   &__details-title {
     color: $grey;
@@ -50,8 +53,11 @@
     color: white;
     line-height: 28px;
     font-size: 18px;
-    display: flex;
-    gap: 40px;
+    transition: .3s;
+    cursor: pointer;
+    &:hover {
+      color: $gold;
+    }
   }
   app-button-contact {
     position: absolute;

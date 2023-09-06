@@ -4,5 +4,5 @@
      (mouseleave)="isHover = false"
 >
   <p>{{benefit.title | translate}}</p>
-  <div class="benefit__dark" *ngIf="!isHover" [@hover]="isHover && 'over'"></div>
+  <div class="benefit__dark" [@hover]="isHover && 'over'"></div>
 </div>

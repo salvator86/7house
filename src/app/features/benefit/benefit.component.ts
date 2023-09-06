@@ -12,7 +12,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   styleUrls: ['./benefit.component.scss'],
   animations: [
     trigger('hover', [
-      state('over', style({ opacity: 1 })),
+      state('over', style({ opacity: 0.3 })),
       transition(':enter', [
         style({ opacity: 0 }),
         animate('.2s ease-in-out'),
