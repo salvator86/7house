@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {animate, state, style, transition, trigger} from "@angular/animations";
@@ -23,6 +23,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   ],
 })
 export class ButtonContactComponent implements OnInit {
+
+  @Output() onModalOpen = new EventEmitter();
 
   isHover: boolean = false;
 

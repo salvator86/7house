@@ -1,0 +1,27 @@
+<div class="modal">
+  <div class="modal__block" #modalBlock>
+    <ng-container *ngIf="!isLetterSent">
+      <div class="modal__content">
+        <h3>{{'contactUs' | translate}}</h3>
+        <form class="modal__form" [formGroup]="form" (ngSubmit)="sendForm(form)">
+          <div class="modal__fieldset">
+            <label for="name">{{'howToNameYou' | translate}}</label>
+            <input type="text" id="name" formControlName="name" placeholder="{{'yourName' | translate}}">
+          </div>
+          <div class="modal__fieldset">
+            <label for="phone">{{'yourPhoneNumber' | translate}}</label>
+            <input type="text" id="phone" formControlName="phone" placeholder="+380" maxlength="13">
+          </div>
+          <button class="modal__button-send" type="submit" [disabled]="form.invalid">{{'send' |  translate}}</button>
+        </form>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isLetterSent">
+      <div class="modal__sent">
+        <h3>{{'thanks' | translate}}</h3>
+        <p>{{'weWillContact' | translate}}</p>
+      </div>
+    </ng-container>
+    <button class="modal__button-close" (click)="onCloseEmitter.emit()"></button>
+  </div>
+</div>

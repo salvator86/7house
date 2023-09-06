@@ -1,0 +1,135 @@
+@import "src/assets/variables/colors";
+
+@mixin closeIcon {
+  content: "";
+  width: 15.5px;
+  height: 2px;
+  background-color: $grey;
+  position: absolute;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  &__block {
+    position: absolute;
+    width: 480px;
+    min-height: 272px;
+    max-height: 480px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+  }
+  &__content {
+    width: 384px;
+    height: 352px;
+    margin: 64px auto;
+    & h3 {
+      width: 100%;
+      height: 56px;
+      line-height: 56px;
+      font: {
+        size: 40px;
+        weight: bold;
+      }
+    }
+  }
+  &__button-close {
+    cursor: pointer;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    height: 24px;
+    width: 24px;
+    background: none;
+    border: none;
+    &:before {
+      @include closeIcon;
+      top: 11px;
+      left: 4.7px;
+      transform: rotate(45deg);
+    }
+    &:after {
+      @include closeIcon;
+      top: 11px;
+      right: 3.7px;
+      transform: rotate(315deg);
+    }
+  }
+  &__fieldset {
+    width: 100%;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    & label {
+      height: 24px;
+      line-height: 24px;
+      font: {
+        size: 16px;
+        weight: 600;
+      }
+      &:after {
+        content: " *";
+        color: red;
+      }
+    }
+    & input {
+      display: block;
+      margin-top: 12px;
+      width: 100%;
+      height: 48px;
+      line-height: 24px;
+      box-sizing: border-box;
+      padding: 16px;
+      outline: none;
+      border: 1px solid rgba($lightGrey, 0.5);
+      border-radius: 4px;
+      font: {
+        size: 16px;
+        family: 'Mont', sans-serif;
+      }
+    }
+  }
+  &__button-send {
+    margin-top: 24px;
+    width: 100%;
+    height: 56px;
+    background-color: $gold;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font: {
+      size: 16px;
+      weight: 600;
+      family: 'Mont', sans-serif;
+    }
+    &[disabled] {
+      cursor: auto;
+      opacity: 0.5;
+    }
+  }
+  &__sent {
+    width: 384px;
+    margin: 64px auto 0 auto;
+    & h3 {
+      line-height: 56px;
+      height: 56px;
+      font: {
+        size: 40px;
+        weight: bold;
+      }
+    }
+    & p {
+      margin-top: 24px;
+      color: $grey;
+      line-height: 32px;
+      height: 64px;
+      font-size: 24px;
+    }
+  }
+}

@@ -42,4 +42,10 @@ export const langUa: any = {
   stanislavResponsibilities: "Реалізація та менеджмент проектів",
   irinaResponsibilities: "Архітектура, дизайн",
   mikhailoResponsibilities: "Реалізація та менеджмент проектів",
+  howToNameYou: "Як до вас звертатися?",
+  yourName: "Ваше ім'я та прізвище",
+  yourPhoneNumber: "Ваш номер телефону",
+  send: "Відправити",
+  thanks: "Дякуємо!",
+  weWillContact: "Ми з вами зв'яжемося за вказаним номером телефону.",
 }

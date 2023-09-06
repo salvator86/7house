@@ -10,6 +10,7 @@ import {ProjectsScreenComponent} from "../../features/projects-screen/projects-s
 import {FirebaseService} from "../services/firebase/firebase.service";
 import {ContactsScreenComponent} from "../../features/contacts-screen/contacts-screen.component";
 import {FooterComponent} from "../../features/footer/footer.component";
+import {ModalContactComponent} from "../../shared/modal-contact/modal-contact.component";
 
 @Component({
   selector: 'app-home-page',
@@ -27,6 +28,7 @@ import {FooterComponent} from "../../features/footer/footer.component";
     ContactsScreenComponent,
     FooterComponent,
     NgIf,
+    ModalContactComponent
   ]
 })
 export class HomePageComponent implements OnInit {
@@ -34,6 +36,15 @@ export class HomePageComponent implements OnInit {
   homeScreenBackgrounds: any;
   projects: any;
   firebaseService: FirebaseService = inject(FirebaseService);
+  isModalOpen: boolean = false;
+
+  onOpenModal(): void {
+    this.isModalOpen = true;
+  }
+
+  onCloseModal(): void {
+    this.isModalOpen = false;
+  }
 
   ngOnInit(): void {
     this.firebaseService.homeScreenBackgrounds.subscribe(data => {

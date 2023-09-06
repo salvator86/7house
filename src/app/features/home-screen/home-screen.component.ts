@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HeaderComponent} from "../header/header.component";
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
@@ -14,6 +14,8 @@ import {ButtonContactComponent} from "../../shared/button-contact/button-contact
 export class HomeScreenComponent implements OnInit, OnDestroy {
 
   @Input() homeScreenBackgrounds: any;
+  @Output() onModalOpen = new EventEmitter();
+
   currentBackground: number = 0;
   timer: number = 7000;
   interval: ReturnType<typeof setInterval>;
@@ -44,6 +46,13 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
     }, this.timer);
   }
 
+  getBackground(): any {
+    return {
+      'background': `linear-gradient(rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)), url(${this.homeScreenBackgrounds[this.currentBackground].imgURL})`,
+    }
+  }
+
   ngOnInit() {
     if (this.homeScreenBackgrounds.length > 1) {
       this.startInterval();
@@ -52,12 +61,5 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     clearInterval(this.interval);
-  }
-
-  getBackground(): any {
-    return {
-      'background': `linear-gradient(rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)), url(${this.homeScreenBackgrounds[this.currentBackground].imgURL})`,
-    }
   }
 }

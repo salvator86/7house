@@ -1,9 +1,15 @@
 <ng-container *ngIf="homeScreenBackgrounds">
-  <app-home-screen [homeScreenBackgrounds]="homeScreenBackgrounds"></app-home-screen>
-  <app-services-screen></app-services-screen>
-  <app-benefits-screen></app-benefits-screen>
-  <app-team-screen></app-team-screen>
-  <app-projects-screen [projects]="projects"></app-projects-screen>
-  <app-contacts-screen></app-contacts-screen>
+  <app-home-screen [homeScreenBackgrounds]="homeScreenBackgrounds"
+                   (onModalOpen)="onOpenModal()"></app-home-screen>
+  <main>
+    <app-services-screen></app-services-screen>
+    <app-benefits-screen></app-benefits-screen>
+    <app-team-screen></app-team-screen>
+    <app-projects-screen [projects]="projects"></app-projects-screen>
+    <app-contacts-screen></app-contacts-screen>
+  </main>
   <app-footer></app-footer>
 </ng-container>
+<app-modal-contact *ngIf="isModalOpen"
+                   [isModalOpen]="isModalOpen"
+                   (onCloseEmitter)="onCloseModal()"></app-modal-contact>
