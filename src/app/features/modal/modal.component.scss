@@ -16,9 +16,9 @@
   background: rgba(0, 0, 0, 0.6);
   &__block {
     position: absolute;
-    width: 480px;
+    min-width: 480px;
     min-height: 272px;
-    max-height: 480px;
+    max-height: 708px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -131,5 +131,15 @@
       height: 64px;
       font-size: 24px;
     }
+  }
+  &__projects {
+    width: 1248px;
+    height: 708px;
+    align-items: center;
+  }
+  &__project {
+    height: 612px;
+    width: 1152px;
+    margin: 0 auto;
   }
 }

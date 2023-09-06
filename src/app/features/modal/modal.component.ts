@@ -7,15 +7,18 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
   selector: 'app-modal-contact',
   standalone: true,
   imports: [CommonModule, TranslatePipe, FormsModule, ReactiveFormsModule],
-  templateUrl: './modal-contact.component.html',
-  styleUrls: ['./modal-contact.component.scss']
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss']
 })
-export class ModalContactComponent implements OnInit {
+export class ModalComponent implements OnInit {
 
   @ViewChild('modalBlock') elementRef: ElementRef;
 
-  @Input() isLetterSent: boolean = false;
+  @Input() modal: string;
   @Input() isModalOpen: boolean;
+  @Input() projects: [];
+
+  @Output() modalEmitter = new EventEmitter();
   @Output() onOpenEmitter = new EventEmitter();
   @Output() onCloseEmitter = new EventEmitter();
 
@@ -30,13 +33,12 @@ export class ModalContactComponent implements OnInit {
       if (!this.elementRef.nativeElement.contains(event.target) && this.isModalOpen) {
         this.onCloseEmitter.emit();
         this.form.reset();
-        this.isLetterSent = false;
       }
     }
   }
 
   sendForm(form: any) {
-    this.isLetterSent = true;
+    this.modalEmitter.emit('thanks');
     console.log(form)
   }
 

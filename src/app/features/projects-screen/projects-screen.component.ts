@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {ProjectComponent} from "../project/project.component";
@@ -13,7 +13,11 @@ import {ProjectComponent} from "../project/project.component";
 export class ProjectsScreenComponent implements AfterViewInit {
 
   @Input() projects: any;
+  @Output() modalEmitter = new EventEmitter();
+  @Output() onModalOpen = new EventEmitter();
+
   @ViewChild('itemsContainer', { static: false }) itemsContainer:  ElementRef<HTMLDivElement>;
+
   private maxScrollLeft: number = 576;
   isLeftButtonDisabled: boolean = true;
   isRightButtonDisabled: boolean = false;
@@ -45,6 +49,11 @@ export class ProjectsScreenComponent implements AfterViewInit {
 
     this.isLeftButtonDisabled = container.scrollLeft === 0;
     this.isRightButtonDisabled = container.scrollLeft === (container.scrollWidth - container.clientWidth);
+  }
+
+  openProjectsModal() {
+    this.modalEmitter.emit('projects');
+    this.onModalOpen.emit();
   }
 
 }

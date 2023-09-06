@@ -1,6 +1,6 @@
 <div class="modal">
   <div class="modal__block" #modalBlock>
-    <ng-container *ngIf="!isLetterSent">
+    <ng-container *ngIf="modal === 'form'">
       <div class="modal__content">
         <h3>{{'contactUs' | translate}}</h3>
         <form class="modal__form" [formGroup]="form" (ngSubmit)="sendForm(form)">
@@ -16,10 +16,17 @@
         </form>
       </div>
     </ng-container>
-    <ng-container *ngIf="isLetterSent">
+    <ng-container *ngIf="modal === 'thanks'">
       <div class="modal__sent">
         <h3>{{'thanks' | translate}}</h3>
         <p>{{'weWillContact' | translate}}</p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="modal === 'projects'">
+      <div class="modal__projects d-flex space-between">
+        <div class="modal__project">
+
+        </div>
       </div>
     </ng-container>
     <button class="modal__button-close" (click)="onCloseEmitter.emit()"></button>

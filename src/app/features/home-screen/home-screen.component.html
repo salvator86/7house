@@ -6,7 +6,7 @@
     <div class="home-container__text _container_small">
       <h1 class="home-container__text-title">{{'homeScreenTitle' | translate}}</h1>
       <h2 class="home-container__text-subtitle">{{'homeScreenSubtitle' | translate}}</h2>
-      <app-button-contact (onModalOpen)="onModalOpen.emit()"></app-button-contact>
+      <app-button-contact (click)="modalEmitter.emit('form')" (onModalOpen)="onModalOpen.emit()"></app-button-contact>
     </div>
     <div class="home-container__footer">
       <div class="home-container__footer-contacts">

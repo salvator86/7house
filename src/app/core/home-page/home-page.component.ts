@@ -10,7 +10,7 @@ import {ProjectsScreenComponent} from "../../features/projects-screen/projects-s
 import {FirebaseService} from "../services/firebase/firebase.service";
 import {ContactsScreenComponent} from "../../features/contacts-screen/contacts-screen.component";
 import {FooterComponent} from "../../features/footer/footer.component";
-import {ModalContactComponent} from "../../shared/modal-contact/modal-contact.component";
+import {ModalComponent} from "../../features/modal/modal.component";
 
 @Component({
   selector: 'app-home-page',
@@ -28,7 +28,7 @@ import {ModalContactComponent} from "../../shared/modal-contact/modal-contact.co
     ContactsScreenComponent,
     FooterComponent,
     NgIf,
-    ModalContactComponent
+    ModalComponent
   ]
 })
 export class HomePageComponent implements OnInit {
@@ -37,6 +37,7 @@ export class HomePageComponent implements OnInit {
   projects: any;
   firebaseService: FirebaseService = inject(FirebaseService);
   isModalOpen: boolean = false;
+  modal: string;
 
   onOpenModal(): void {
     this.isModalOpen = true;
@@ -44,6 +45,11 @@ export class HomePageComponent implements OnInit {
 
   onCloseModal(): void {
     this.isModalOpen = false;
+    this.modal = '';
+  }
+
+  setModal($event: any) {
+    this.modal = $event;
   }
 
   ngOnInit(): void {
@@ -54,5 +60,4 @@ export class HomePageComponent implements OnInit {
       this.projects = data;
     })
   }
-
 }

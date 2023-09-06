@@ -15,9 +15,10 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
 
   @Input() homeScreenBackgrounds: any;
   @Output() onModalOpen = new EventEmitter();
+  @Output() modalEmitter = new EventEmitter();
 
   currentBackground: number = 0;
-  timer: number = 7000;
+  timer: number = 700000;
   interval: ReturnType<typeof setInterval>;
 
   changeToPrevBackground(): void {
