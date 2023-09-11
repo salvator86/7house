@@ -15,6 +15,7 @@ export class ProjectsScreenComponent implements AfterViewInit {
   @Input() projects: any;
   @Output() modalEmitter = new EventEmitter();
   @Output() onModalOpen = new EventEmitter();
+  @Output() currenProjectIndexEmitter = new EventEmitter();
 
   @ViewChild('itemsContainer', { static: false }) itemsContainer:  ElementRef<HTMLDivElement>;
 
@@ -51,9 +52,10 @@ export class ProjectsScreenComponent implements AfterViewInit {
     this.isRightButtonDisabled = container.scrollLeft === (container.scrollWidth - container.clientWidth);
   }
 
-  openProjectsModal() {
+  openProjectsModal(index: number) {
     this.modalEmitter.emit('projects');
     this.onModalOpen.emit();
+    this.currenProjectIndexEmitter.emit(index);
   }
 
 }

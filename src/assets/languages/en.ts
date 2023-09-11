@@ -42,4 +42,7 @@ export const langEn = {
   stanislavResponsibilities: "Реалізація та менеджмент проектів",
   irinaResponsibilities: "Архітектура, дизайн",
   mikhailoResponsibilities: "Реалізація та менеджмент проектів",
+  square: "Square",
+  wallMaterial: "Wall material",
+  additional: "Additional",
 }

@@ -1,7 +1,19 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Project} from "../../core/models/project";
+import {TranslationService} from "../../core/services/translation/translation.service";
 
 @Component({
   selector: 'app-modal-contact',
@@ -12,18 +24,26 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 })
 export class ModalComponent implements OnInit {
 
+  private translationService: TranslationService = inject(TranslationService);
+
   @ViewChild('modalBlock') elementRef: ElementRef;
 
   @Input() modal: string;
   @Input() isModalOpen: boolean;
-  @Input() projects: [];
+  @Input() projects: Project[];
+  @Input() currentProjectIndex: number;
 
   @Output() modalEmitter = new EventEmitter();
   @Output() onOpenEmitter = new EventEmitter();
   @Output() onCloseEmitter = new EventEmitter();
+  @Output() currenProjectIndexEmitter = new EventEmitter();
 
   form: FormGroup;
   private isFirstClickOutside = true;
+
+  get project(): Project {
+    return this.projects[this.currentProjectIndex];
+  }
 
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event): void {
@@ -40,6 +60,22 @@ export class ModalComponent implements OnInit {
   sendForm(form: any) {
     this.modalEmitter.emit('thanks');
     console.log(form)
+  }
+
+  getText(ua: string, en: string): string {
+    return this.translationService.currentLanguage === 'ua' ? ua : en;
+  }
+
+  prevProject() {
+    if (this.currentProjectIndex > 0) {
+      this.currenProjectIndexEmitter.emit(this.currentProjectIndex - 1);
+    }
+  }
+
+  nextProject() {
+    if (this.currentProjectIndex < this.projects.length - 1) {
+      this.currenProjectIndexEmitter.emit(this.currentProjectIndex + 1);
+    }
   }
 
   ngOnInit(): void {

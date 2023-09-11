@@ -43,8 +43,8 @@
       </div>
       <div class="projects__list-block">
         <div class="projects__list-block-items d-flex space-between" #itemsContainer>
-          <app-project (click)="openProjectsModal()"
-                       *ngFor="let project of projects"
+          <app-project (click)="openProjectsModal(i)"
+                       *ngFor="let project of projects; let i = index"
                        [project]="project"></app-project>
         </div>
         <div class="projects__list-block-additional"></div>

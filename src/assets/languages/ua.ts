@@ -48,4 +48,7 @@ export const langUa: any = {
   send: "Відправити",
   thanks: "Дякуємо!",
   weWillContact: "Ми з вами зв'яжемося за вказаним номером телефону.",
+  square: "Площа",
+  wallMaterial: "Матеріал стін",
+  additional: "Додатково",
 }

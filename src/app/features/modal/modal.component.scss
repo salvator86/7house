@@ -1,4 +1,5 @@
 @import "src/assets/variables/colors";
+@import "src/assets/styles/mixins";
 
 @mixin closeIcon {
   content: "";
@@ -14,6 +15,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
   &__block {
     position: absolute;
     min-width: 480px;
@@ -138,8 +140,36 @@
     align-items: center;
   }
   &__project {
-    height: 612px;
-    width: 1152px;
     margin: 0 auto;
+    width: 1152px;
+    height: 612px;
+    align-items: center;
+    & img {
+      height: 100%;
+      width: 864px;
+    }
+    &-content {
+      width: 240px;
+      height: 516px;
+      flex-direction: column;
+    }
+  }
+  &__buttons {
+    @include buttons;
+  }
+  &__project-content-text {
+    flex-direction: column;
+    margin-top: 24px;
+  }
+  &__project-grey-text {
+    color: $grey;
+    line-height: 24px;
+    font-size: 16px;
+  }
+  &__project-info-text {
+    margin-top: 4px;
+    color: $almostBlack;
+    line-height: 28px;
+    font-size: 18px;
   }
 }

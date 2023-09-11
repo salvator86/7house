@@ -8,7 +8,8 @@
     <app-team-screen></app-team-screen>
     <app-projects-screen (modalEmitter)="setModal($event)"
                          (onModalOpen)="onOpenModal()"
-                         [projects]="projects"></app-projects-screen>
+                         [projects]="projects"
+                         (currenProjectIndexEmitter)="setProjectIndex($event)"></app-projects-screen>
     <app-contacts-screen></app-contacts-screen>
   </main>
   <app-footer></app-footer>
@@ -19,4 +20,6 @@
                    (modalEmitter)="setModal($event)"
                    (onCloseEmitter)="onCloseModal()"
                    [projects]="projects"
+                   [currentProjectIndex]="currentProjectIndex"
+                   (currenProjectIndexEmitter)="setProjectIndex($event)"
 ></app-modal-contact>

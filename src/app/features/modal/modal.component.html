@@ -23,9 +23,36 @@
       </div>
     </ng-container>
     <ng-container *ngIf="modal === 'projects'">
-      <div class="modal__projects d-flex space-between">
-        <div class="modal__project">
-
+      <div class="modal__projects d-flex">
+        <div class="modal__project d-flex space-between">
+          <img [src]="project.imgURL" alt="project's picture">
+          <div class="modal__project-content d-flex space-between">
+            <div>
+              <h3>{{project.title}}</h3>
+              <div class="d-flex modal__project-content-text">
+                <p class="modal__project-grey-text">{{'square' | translate}}:</p>
+                <p>{{project.square}}</p>
+              </div>
+              <div class="d-flex modal__project-content-text">
+                <p class="modal__project-grey-text">{{'wallMaterial' | translate}}:</p>
+                <p>{{getText(project.wallMaterialUA, project.wallMaterialEN)}}</p>
+              </div>
+              <div class="d-flex modal__project-content-text">
+                <p class="modal__project-grey-text">{{'additional' | translate}}:</p>
+                <p class="modal__project-info-text">{{getText(project.additionalInfoUA, project.additionalInfoEN)}}</p>
+              </div>
+            </div>
+            <div class="modal__buttons">
+              <button (click)="prevProject()"
+                      [disabled]="!currentProjectIndex">
+                <span></span>
+              </button>
+              <button (click)="nextProject()"
+                      [disabled]="currentProjectIndex === projects.length - 1">
+                <span></span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </ng-container>

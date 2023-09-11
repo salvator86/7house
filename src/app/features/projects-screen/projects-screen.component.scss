@@ -105,64 +105,7 @@
         }
       }
       &-buttons {
-        position: relative;
-        display: flex;
-        align-items: flex-end;;
-        & button {
-          @include buttonArrow;
-          border: 1px solid $gold;
-          &:hover {
-            background-color: $gold;
-          }
-          &:hover span {
-            background-color: white;
-          }
-          &:hover span:before {
-            border-color: white !important;
-          }
-        }
-        & button[disabled]:first-child {
-          background: none;
-          cursor: auto;
-          & span {
-            background-color: $semiGold;
-            &:before {
-              border-bottom: 2px solid $semiGold !important;
-              border-left: 2px solid $semiGold !important;
-            }
-          }
-          border-color: $semiGold;
-        }
-        & button[disabled]:last-child {
-          background: none;
-          cursor: auto;
-          & span {
-            background-color: $semiGold;
-            &:before {
-              border-bottom: 2px solid $semiGold;
-              border-right: 2px solid $semiGold;
-            }
-          }
-          border-color: $semiGold;
-        }
-        & button:first-of-type {
-          margin-right: 24px;
-        }
-        & span {
-          @include arrow;
-          background-color: $gold;
-          transition: .3s;
-        }
-        button:first-child span:before {
-          @include arrowLeft;
-          border-bottom: 2px solid $gold;
-          border-left: 2px solid $gold;
-        }
-        button:last-child span:before {
-          @include arrowRight;
-          border-bottom: 2px solid $gold;
-          border-right: 2px solid $gold;
-        }
+        @include buttons;
       }
     }
     &-block {
