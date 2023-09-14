@@ -20,6 +20,12 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
   currentBackground: number = 0;
   timer: number = 700000;
   interval: ReturnType<typeof setInterval>;
+  isMenuOpened: boolean = false;
+
+  onMenuOpen(): void {
+    this.isMenuOpened = !this.isMenuOpened;
+    console.log(this.isMenuOpened);
+  }
 
   changeToPrevBackground(): void {
     this.currentBackground--;
@@ -51,6 +57,14 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
     return {
       'background': `linear-gradient(rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.6)), url(${this.homeScreenBackgrounds[this.currentBackground].imgURL})`,
+    }
+  }
+
+  scrollToServices(section: string) {
+    const servicesSection = document.getElementById(section);
+    if (servicesSection) {
+      this.isMenuOpened = false;
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 

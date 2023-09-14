@@ -15,3 +15,22 @@
     //}
   }
 }
+
+@media (min-width: 900px) and (max-width: 1100px) {
+  .navbar {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .navbar {
+    gap: 25px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+}

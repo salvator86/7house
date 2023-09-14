@@ -38,6 +38,7 @@ export class ProjectsScreenComponent implements AfterViewInit {
   }
 
   scrollRight(): void {
+    console.log('check');
     const container = this.itemsContainer.nativeElement;
     const currentScrollLeft = container.scrollLeft;
     const newScrollLeft = Math.min(container.scrollWidth - container.clientWidth, currentScrollLeft + this.maxScrollLeft);

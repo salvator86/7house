@@ -2,7 +2,7 @@
      [ngStyle]="getBackground()"
      class="home-container">
   <div class="_container">
-    <app-header></app-header>
+    <app-header (openMenuEmitter)="onMenuOpen()"></app-header>
     <div class="home-container__text _container_small">
       <h1 class="home-container__text-title">{{'homeScreenTitle' | translate}}</h1>
       <h2 class="home-container__text-subtitle">{{'homeScreenSubtitle' | translate}}</h2>
@@ -32,5 +32,18 @@
         </div>
       </ng-container>
     </ng-container>
+  </div>
+  <div *ngIf="isMenuOpened" class="menu">
+    <ul class="menu__navbar">
+      <li><a (click)="scrollToServices('servicesSection')">{{ 'navServices' | translate }}</a></li>
+      <li><a (click)="scrollToServices('teamSection')">{{'navTeam' | translate}}</a></li>
+      <li><a (click)="scrollToServices('processSection')">{{'navProcess' | translate}}</a></li>
+      <li><a (click)="scrollToServices('projectsSection')">{{'navProjects' | translate}}</a></li>
+      <li><a (click)="scrollToServices('contactsSection')">{{'navContacts' | translate}}</a></li>
+    </ul>
+    <div class="menu__contacts">
+      <a href="https://www.facebook.com/7house.ua/">Facebook</a>
+      <a href="https://www.instagram.com/7house.ua/">Instagram</a>
+    </div>
   </div>
 </section>

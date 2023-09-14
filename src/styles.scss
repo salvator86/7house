@@ -49,3 +49,32 @@ body {
 .space-between {
   justify-content: space-between;
 }
+
+@media (min-width: 900px) and (max-width: 1100px) {
+  ._container {
+    max-width: 900px;
+  }
+  ._container_small {
+    max-width: 756px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  ._container {
+    max-width: 800px;
+  }
+  ._container_small {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  ._container {
+    max-width: 704px;
+    padding: 0 32px;
+  }
+  ._container_small {
+    max-width: 704px;
+    padding: 0;
+  }
+}

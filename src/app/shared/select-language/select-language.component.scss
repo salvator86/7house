@@ -4,6 +4,7 @@
   position: relative;
   cursor: pointer;
   width: 80px;
+  display: none; // comment 1
   &__block {
     transition: .3s;
     display: flex;

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {NavigationComponent} from "../../shared/navigation/navigation.component";
 import {SelectLanguageComponent} from "../../shared/select-language/select-language.component";
@@ -10,9 +10,6 @@ import {SelectLanguageComponent} from "../../shared/select-language/select-langu
   standalone: true,
   imports: [TranslatePipe, NavigationComponent, SelectLanguageComponent]
 })
-export class HeaderComponent implements OnInit {
-
-  ngOnInit(): void {
-  }
-
+export class HeaderComponent {
+  @Output() openMenuEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 }

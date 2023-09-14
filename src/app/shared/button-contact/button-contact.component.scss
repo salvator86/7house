@@ -24,3 +24,10 @@
     box-sizing: border-box;
   }
 }
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .button {
+    margin-top: 24px;
+    width: 100%;
+  }
+}
