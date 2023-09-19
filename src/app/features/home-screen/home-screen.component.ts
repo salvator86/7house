@@ -56,7 +56,7 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
   getBackground(): any {
     return {
       'background': `linear-gradient(rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)), url(${this.homeScreenBackgrounds[this.currentBackground].imgURL})`,
+      rgba(0, 0, 0, 0.6)), url(${this.homeScreenBackgrounds[this.currentBackground]})`,
     }
   }
 

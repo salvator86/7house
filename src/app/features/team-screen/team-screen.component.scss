@@ -4,16 +4,16 @@
   height: 656px;
   &__header {
     height: 72px;
-    border-left: 4px solid $gold;
     margin-top: 96px;
-    padding-left: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
     & h2 {
-      height: 64px;
-      line-height: 64px;
+      border-left: 4px solid $gold;
+      padding-left: 16px;
+      height: 72px;
+      line-height: 72px;
       font: {
         size: 56px;
         weight: bold;
@@ -40,13 +40,92 @@
 
 @media (min-width: 900px) and (max-width: 1100px) {
   .team {
-    height: 756px;
+    height: 620px;
     position: relative;
+    & ._container_small {
+      max-width: inherit;
+      padding: 0;
+    }
+    &__header {
+      width: 95%;
+      margin-left: auto;
+      & p {
+        font-size: 20px;
+      }
+    }
     &__teammates {
-      grid-template-columns: repeat(3, 280px);
-      height: 380px;
+      height: 440px;
+      width: 95%;
       gap: 24px;
-      position: absolute;
+      overflow-x: scroll;
+      margin-left: auto;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .team {
+    height: 560px;
+    position: relative;
+    & ._container_small {
+      max-width: inherit;
+      width: 100%;
+      padding: 0;
+    }
+    &__header {
+      width: 95%;
+      margin-left: auto;
+      margin-top: 60px;
+      & p {
+        font-size: 20px;
+      }
+    }
+    &__teammates {
+      height: 385px;
+      width: 95%;
+      gap: 24px;
+      overflow-x: scroll;
+      margin-left: auto;
+    }
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .team {
+    height: 696px;
+    position: relative;
+    & ._container_small {
+      max-width: inherit;
+      width: 100%;
+      padding: 0;
+    }
+    &__header {
+      width: 95%;
+      margin-left: auto;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 140px;
+      gap: 48px;
+      & h2 {
+        height: 56px;
+        line-height: 56px;
+        font-size: 32px;
+      }
+      & p {
+        height: auto;
+        width: 95%;
+        font-size: 24px;
+      }
+    }
+    &__teammates {
+      height: 380px;
+      width: 95%;
+      gap: 24px;
+      overflow-x: scroll;
+      margin-left: auto;
+      margin-top: 100px;
     }
   }
 }

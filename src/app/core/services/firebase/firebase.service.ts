@@ -9,15 +9,19 @@ import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat
 export class FirebaseService {
 
   db: AngularFirestore = inject(AngularFirestore)
-  data: AngularFirestoreCollection<any>;
+  projectsCollection: AngularFirestoreCollection<any>;
+  backgroundsCollection: AngularFirestoreCollection<any>;
   projects: Subject<any[]> = new Subject<any>;
   homeScreenBackgrounds:  Subject<any[]> = new Subject<any>;
 
   getData(): void {
-    this.data = this.db.collection('projects');
-    this.data.valueChanges().subscribe(data => {
-      console.log(data)
+    this.projectsCollection = this.db.collection('projects');
+    this.projectsCollection.valueChanges().subscribe(data => {
       this.projects.next(data[0].projects);
+    })
+
+    this.backgroundsCollection = this.db.collection('background');
+    this.backgroundsCollection.valueChanges().subscribe(data => {
       this.homeScreenBackgrounds.next(data[0].homeScreen);
     })
   }

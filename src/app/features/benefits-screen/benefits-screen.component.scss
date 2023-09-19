@@ -101,6 +101,9 @@
 @media (min-width: 360px) and (max-width: 767px) {
   .benefits {
     min-height: 628px;
+    & ._container_small {
+      max-width: inherit;
+    }
     &__header {
       height: 250px;
       display: flex;
