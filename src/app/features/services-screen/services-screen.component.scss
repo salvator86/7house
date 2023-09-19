@@ -1,7 +1,7 @@
 @import "src/assets/variables/colors";
 
 .services-container {
-  height: 632px;
+  min-height: 632px;
   padding-top: 104px;
   box-sizing: border-box;
   & h2 {
@@ -9,16 +9,41 @@
     box-sizing: border-box;
     padding-left: 8px;
     border-left: 4px solid $gold;
-    height: 72px;
+    min-height: 72px;
     font: {
       size: 56px;
       weight: bold;
     }
   }
   &__list {
-    margin: 48px auto 0 auto;
+    margin: 48px auto 64px auto;
     display: grid;
     grid-template-columns: repeat(4, 240px);
     gap: 32px;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) {
+  .services-container {
+    &__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .services-container {
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .services-container {
+    &__list {
+      grid-template-columns: 311px;
+      justify-content: center;
+    }
   }
 }

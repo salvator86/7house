@@ -21,7 +21,6 @@
     bottom: 0;
     cursor: pointer;
     &-info {
-      width: 200px;
       min-height: 56px;
       height: fit-content;
       transition: 1.5s;
@@ -74,4 +73,8 @@
       transform: translate(-50%, -50%);
     }
   }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) {
+
 }

@@ -8,7 +8,7 @@ export const langUa: any = {
   homeScreenSubtitle: "Отримайте можливість реалізувати свої фантазії \nв готовому будинку.",
   contactUs: "Зв'язатися з нами",
   servicesBlockTitle: "Наші послуги",
-  serviceTitle1: "Вибір \nділянки",
+  serviceTitle1: "Вибір ділянки",
   serviceSubtitle1: "Якийсь текст як опис цієї послуги сюди потрібно додативыа",
   serviceTitle2: "Архітектура та дизайн",
   serviceSubtitle2: "Якийсь текст як опис цієї послуги сюди потрібно додати",

@@ -2,16 +2,16 @@
   <app-home-screen [homeScreenBackgrounds]="homeScreenBackgrounds"
                    (modalEmitter)="setModal($event)"
                    (onModalOpen)="onOpenModal()"></app-home-screen>
-<!--  <main>-->
-<!--    <app-services-screen></app-services-screen>-->
-<!--    <app-benefits-screen></app-benefits-screen>-->
-<!--    <app-team-screen></app-team-screen>-->
+  <main>
+    <app-services-screen></app-services-screen>
+    <app-benefits-screen></app-benefits-screen>
+    <app-team-screen></app-team-screen>
 <!--    <app-projects-screen (modalEmitter)="setModal($event)"-->
 <!--                         (onModalOpen)="onOpenModal()"-->
 <!--                         [projects]="projects"-->
 <!--                         (currenProjectIndexEmitter)="setProjectIndex($event)"></app-projects-screen>-->
 <!--    <app-contacts-screen></app-contacts-screen>-->
-<!--  </main>-->
+  </main>
 <!--  <app-footer></app-footer>-->
 </ng-container>
 <app-modal-contact *ngIf="isModalOpen"
