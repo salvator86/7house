@@ -10,9 +10,9 @@
                          (onModalOpen)="onOpenModal()"
                          [projects]="projects"
                          (currenProjectIndexEmitter)="setProjectIndex($event)"></app-projects-screen>
-<!--    <app-contacts-screen></app-contacts-screen>-->
+    <app-contacts-screen></app-contacts-screen>
   </main>
-<!--  <app-footer></app-footer>-->
+  <app-footer></app-footer>
 </ng-container>
 <app-modal-contact *ngIf="isModalOpen"
                    [modal]="modal"

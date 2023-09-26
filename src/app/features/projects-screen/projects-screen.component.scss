@@ -139,6 +139,7 @@
 .projects-list {
   position: relative;
   width: 1056px;
+  height: 728px;
 }
 ._container {
   padding: 0;
@@ -241,6 +242,7 @@
 @media (min-width: 360px) and (max-width: 767px) {
   .projects-list {
     width: 90%;
+    height: 572px;
   }
   .projects__list {
     margin-top: 64px;
@@ -326,6 +328,8 @@
       }
       &-additional {
         right: 0;
+        height: 464px;
+        width: 70px;
       }
     }
     &__list-items app-project:last-of-type {
@@ -335,6 +339,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 1440px){
+  .projects-list {
+    height: 706px;
+  }
   .projects__list-additional {
     display: none;
   }

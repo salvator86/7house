@@ -2,9 +2,16 @@
   <div class="_container">
     <div class="footer__display d-flex">
       <div class="footer__content">
-        <img src="assets/images/logo.png" alt="logo">
+        <img class="footer__logo" src="assets/images/logo.png" alt="logo">
         <app-navigation></app-navigation>
-        <app-select-language section="footer"></app-select-language>
+<!--        <app-select-language section="footer"></app-select-language>-->
+        <ul class="footer__navbar">
+          <li><a (click)="scrollToServices('servicesSection')">{{ 'navServices' | translate }}</a></li>
+          <li><a (click)="scrollToServices('teamSection')">{{'navTeam' | translate}}</a></li>
+          <li><a (click)="scrollToServices('processSection')">{{'navProcess' | translate}}</a></li>
+          <li><a (click)="scrollToServices('projectsSection')">{{'navProjects' | translate}}</a></li>
+          <li><a (click)="scrollToServices('contactsSection')">{{'navContacts' | translate}}</a></li>
+        </ul>
       </div>
     </div>
   </div>

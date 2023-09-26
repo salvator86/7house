@@ -14,11 +14,12 @@ import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Project} from "../../core/models/project";
 import {TranslationService} from "../../core/services/translation/translation.service";
+import {ProjectComponent} from "../project/project.component";
 
 @Component({
   selector: 'app-modal-contact',
   standalone: true,
-  imports: [CommonModule, TranslatePipe, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, TranslatePipe, FormsModule, ReactiveFormsModule, ProjectComponent],
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })

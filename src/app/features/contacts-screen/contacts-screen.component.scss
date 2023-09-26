@@ -43,6 +43,12 @@
       margin-right: 40px;
     }
   }
+  &__socials {
+    row-gap: 40px;
+    & a {
+      text-decoration: none;
+    }
+  }
   &__details-title {
     color: $grey;
     opacity: 50%;
@@ -50,6 +56,7 @@
     font-size: 16px;
   }
   &__link {
+    text-decoration: none;
     color: white;
     line-height: 28px;
     font-size: 18px;
@@ -66,5 +73,101 @@
   &__image {
     width: 480px;
     height: 100%;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) {
+  .contacts {
+    height: 636px;
+    &__info {
+      height: 434px;
+    }
+    &__image {
+      height: 434px;
+      width: 434px;
+      & img {
+        width: 100%;
+      }
+    }
+    &__title {
+      height: 56px;
+      & h2 {
+        height: 56px;
+        line-height: 56px;
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .contacts {
+    height: 582px;
+    &__info {
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &__image {
+      height: 380px;
+      width: 340px;
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    &__title {
+      height: 56px;
+      & h2 {
+        height: 56px;
+        line-height: 56px;
+        font-size: 32px;
+      }
+    }
+    & app-button-contact {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .contacts {
+    height: 807px;
+    &__block {
+      flex-direction: column;
+      padding: 64px 32px 0 32px;
+    }
+    &__info {
+      height: 311px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &__image {
+      height: 311px;
+      width: 100%;
+      margin-top: 48px;
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    &__title {
+      height: 56px;
+      & h2 {
+        height: 56px;
+        line-height: 56px;
+        font-size: 32px;
+      }
+    }
+    &__content {
+      margin-top: 48px;
+    }
+    & app-button-contact {
+      display: none;
+    }
   }
 }

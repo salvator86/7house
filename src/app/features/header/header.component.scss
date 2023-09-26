@@ -33,6 +33,8 @@
       border-bottom: 1px solid white;
       transition: .3s;
       cursor: pointer;
+      text-decoration: none;
+      color: white;
       &:hover {
         color: $gold;
         border-color: $gold;
