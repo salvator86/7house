@@ -98,3 +98,40 @@
     border-right: 2px solid $gold;
   }
 }
+
+@mixin carousel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &-item {
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+    & p {
+      transition: .3s;
+      height: 24px;
+      width: 20px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      margin-right: 16px;
+    }
+    & p:hover {
+      opacity: 1 !important;
+    }
+    &-line {
+      height: 1px;
+      width: 80px;
+      color: white;
+      background-color: white;
+    }
+  }
+}

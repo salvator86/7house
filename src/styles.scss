@@ -1,28 +1,8 @@
-@font-face {
-  font-family: 'Mont';
-  src: url('/assets/fonts/mont/Mont-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('/assets/fonts/mont/Mont-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('/assets/fonts/mont/Mont-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
 @import "src/assets/variables/colors";
+@import url('https://fonts.cdnfonts.com/css/mont');
 
 body {
-  font-family: 'Mont', sans-serif;
+  font-family: 'Mont', sans-serif !important;
 }
 
 * {

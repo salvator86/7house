@@ -9,7 +9,7 @@ import {ButtonContactComponent} from "../../shared/button-contact/button-contact
   standalone: true,
   imports: [CommonModule, HeaderComponent, TranslatePipe, ButtonContactComponent],
   templateUrl: './home-screen.component.html',
-  styleUrls: ['./home-screen.component.scss'],
+  styleUrls: ['./home-screen.component.scss', './home-screen-2.component.scss'],
 })
 export class HomeScreenComponent implements OnInit, OnDestroy {
 

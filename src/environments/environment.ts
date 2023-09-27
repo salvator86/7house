@@ -9,10 +9,10 @@ export const environment = {
     storageBucket: 'house-c2f86.appspot.com',
     locationId: 'europe-west',
     apiKey: 'AIzaSyDcLEcFvJ6eM9D6zv83CfaiEFt4djsT3IY',
-    authDomain: 'house-c2f86.firebaseapp.com',
+    // authDomain: 'house-c2f86.firebaseapp.com',
     messagingSenderId: '498171639664',
   },
-  production: false,
+  production: true,
 };
 
 /*

@@ -8,7 +8,7 @@ import {ProjectComponent} from "../project/project.component";
   standalone: true,
   imports: [CommonModule, TranslatePipe, ProjectComponent],
   templateUrl: './projects-screen.component.html',
-  styleUrls: ['./projects-screen.component.scss']
+  styleUrls: ['./projects-screen.component.scss', './projects-screen-2.component.scss']
 })
 export class ProjectsScreenComponent implements AfterViewInit {
 

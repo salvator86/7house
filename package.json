@@ -1,6 +1,7 @@
 {
   "name": "7house",
   "version": "0.0.0",
+  "homepage": "https://salvator86.github.io/7house",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

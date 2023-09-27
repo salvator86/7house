@@ -1,0 +1,133 @@
+@media (min-width: 900px) and (max-width: 1100px) {
+  .home-container {
+    &__text {
+      &-title {
+        margin-top: 10vh;
+        width: 680px;
+        font-size: 60px;
+        line-height: 90px;
+      }
+      &-subtitle {
+        width: 600px;
+        font-size: 20px;
+      }
+    }
+    &__footer {
+      margin-top: 50px;
+      position: absolute;
+      bottom: 32px;
+      width: 85%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .home-container {
+    &__text {
+      &-title {
+        width: 100%;
+        font-size: 54px;
+        line-height: 76px;
+      }
+      &-subtitle {
+        width: 480px;
+        font-size: 20px;
+      }
+    }
+    &__footer {
+      position: absolute;
+      bottom: 32px;
+      width: 95%;
+    }
+  }
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .home-container {
+    position: relative;
+    min-height: 812px;
+    height: 100vh;
+    &__text {
+      margin-top: 17vh;
+      &-title {
+        width: 100%;
+        font-size: 32px;
+        line-height: 48px;
+      }
+      &-subtitle {
+        width: 100%;
+        font-size: 16px;
+        margin-top: 16px;
+        line-height: 24px;
+      }
+    }
+    &__footer {
+      width: auto;
+      position: absolute;
+      right: 32px;
+      bottom: 32px;
+      &-contacts {
+        display: none;
+      }
+      &-buttons {
+        flex-direction: column;
+        gap: 24px;
+        width: auto;
+      }
+    }
+    &__carousel {
+      position: absolute;
+      left: 32px;
+      top: auto;
+      right: auto;
+      bottom: 32px;
+      height: 28px;
+      display: flex;
+      flex-direction: row;
+      justify-content: normal;
+      &-item {
+        &-line {
+          display: none;
+        }
+      }
+      &-item:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+    .menu {
+      height: 100vh;
+      background-color: black;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 15;
+      &__navbar {
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+        line-height: 48px;
+        color: white;
+        margin-left: 32px;
+        margin-top: 184px;
+        list-style: none;
+        font: {
+          weight: bold;
+          size: 32px;
+        }
+      }
+      &__contacts {
+        margin-left: 32px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 48px;
+        row-gap: 16px;
+        & a {
+          color: white;
+          text-decoration: none;
+          line-height: 28px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

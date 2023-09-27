@@ -21,7 +21,7 @@ import {ProjectComponent} from "../project/project.component";
   standalone: true,
   imports: [CommonModule, TranslatePipe, FormsModule, ReactiveFormsModule, ProjectComponent],
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss', './modal.component-2.scss']
 })
 export class ModalComponent implements OnInit {
 
