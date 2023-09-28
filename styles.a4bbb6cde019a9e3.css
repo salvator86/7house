@@ -1,0 +1,56 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[5].rules[1].use[0]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].rules[1].use[1]!./src/styles.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@import url(https://fonts.cdnfonts.com/css/mont);
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].rules[0].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[5].rules[1].use[0]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].rules[1].use[1]!./src/styles.scss (1) ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+body {
+  font-family: "Mont", sans-serif !important;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+._container {
+  max-width: 1248px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+._container_small {
+  max-width: 1056px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+.d-flex {
+  display: flex;
+}
+.space-between {
+  justify-content: space-between;
+}
+@media (min-width: 900px) and (max-width: 1100px) {
+  ._container {
+    max-width: 900px;
+  }
+  ._container_small {
+    max-width: 756px;
+  }
+}
+@media (min-width: 768px) and (max-width: 899px) {
+  ._container {
+    max-width: 800px;
+  }
+  ._container_small {
+    max-width: 600px;
+  }
+}
+@media (min-width: 360px) and (max-width: 767px) {
+  ._container {
+    max-width: 704px;
+    padding: 0 32px;
+  }
+  ._container_small {
+    max-width: 704px;
+    padding: 0;
+  }
+}
