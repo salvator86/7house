@@ -14,9 +14,11 @@
   display: grid;
   grid-template-columns: 18% 44% 38%;
   scroll-behavior: smooth;
+  align-items: center;
+  height: 80px;
   &__logo {
-    width: 120px;
-    height: 24px;
+    width: 100px;
+    height: 90%;
   }
   &__tools {
     display: flex;
@@ -65,14 +67,25 @@
         top: 5px;
       }
     }
+    & span.active {
+      height: 0;
+      &:before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      &:after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
   }
 }
 
 @media (min-width: 900px) and (max-width: 1100px) {
   .header {
     &__logo {
-      width: 120px;
-      height: 20px
+      width: 90px;
+      height: 80%;
     }
     &__tools {
       &-phone {
@@ -85,8 +98,8 @@
 @media (min-width: 768px) and (max-width: 899px) {
   .header {
     &__logo {
-      width: 120px;
-      height: 24px
+      width: 60px;
+      height: 60%;
     }
     &__tools {
       &-phone {
@@ -103,8 +116,8 @@
     justify-content: space-between;
     align-items: center;
     &__logo {
-      width: 120px;
-      height: 24px;
+      width: 90px;
+      height: 100%;
       position: relative;
       z-index: 20;
     }

@@ -8,6 +8,6 @@
       </div>
       <a class="header__tools-phone" href="tel:+380950059025">+38 (095) 005 90 25</a>
     </div>
-    <button (click)="openMenuEmitter.emit()" class="header__burger-button"><span></span></button>
+    <button (click)="toggleIsMenuActive()" class="header__burger-button"><span [class.active]="isMenuActive"></span></button>
   </nav>
 </header>

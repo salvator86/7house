@@ -12,4 +12,11 @@ import {SelectLanguageComponent} from "../../shared/select-language/select-langu
 })
 export class HeaderComponent {
   @Output() openMenuEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  isMenuActive: boolean = false;
+
+  toggleIsMenuActive(): void {
+    this.isMenuActive = !this.isMenuActive;
+    this.openMenuEmitter.emit()
+  }
 }
