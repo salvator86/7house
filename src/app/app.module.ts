@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './core/home-page/home-page.component';
-import { AdminPageComponent } from './core/admin-page/admin-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
@@ -21,6 +20,8 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireRemoteConfigModule} from "@angular/fire/compat/remote-config";
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import {provideFirebaseApp} from "@angular/fire/app";
+import {AdminPageComponent} from "./core/admin-page/admin-page.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {provideFirebaseApp} from "@angular/fire/app";
     HttpClientModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
     // AngularFireAuthModule,
     // AngularFireRemoteConfigModule,
     // AngularFireFunctionsModule,
