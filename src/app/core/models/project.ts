@@ -20,5 +20,5 @@ export interface ProjectTable {
   wallMaterialUA: string;
   additionalInfoEN: string;
   additionalInfoUA: string;
-  isEditing: boolean
+  isEditing?: boolean
 }

@@ -2,7 +2,7 @@
      [ngStyle]="getBackground()"
      class="home-container">
   <div class="_container">
-    <app-header (openMenuEmitter)="onMenuOpen()"></app-header>
+    <app-header (openMenuEmitter)="onMenuOpen()" [isMenuOpen]="isMenuOpened"></app-header>
     <div class="home-container__text _container_small">
       <div class="home-container__text-block">
         <h1 class="home-container__text-title">{{'homeScreenTitle' | translate}}</h1>

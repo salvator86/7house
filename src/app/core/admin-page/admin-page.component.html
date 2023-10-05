@@ -1,7 +1,8 @@
 <section class="projects">
   <form [formGroup]="projectForm">
-    <table border="1px">
-      <tr>
+    <table class="projects__table" border="1px">
+      <thead>
+        <td>№</td>
         <td>Project Name</td>
         <td colspan="2">Subtitle</td>
         <td>Square</td>
@@ -10,38 +11,106 @@
         <td>Image</td>
         <td>Edit</td>
         <td>Delete</td>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects; let i = index">
+          <ng-container *ngIf="!project.isEditing; else editMode">
+            <td>{{i + 1}}</td>
+            <td>{{project.title}}</td>
+            <td>{{project.subtitleUA}}</td>
+            <td>{{project.subtitleEN || '---'}}</td>
+            <td>{{project.square}}</td>
+            <td>{{project.wallMaterialUA}}</td>
+            <td>{{project.wallMaterialEN || '---'}}</td>
+            <td>{{project.additionalInfoUA}}</td>
+            <td>{{project.additionalInfoEN || '---'}}</td>
+            <td><img [src]="project.imgURL" width="100px"></td>
+            <td>
+              <button class="projects__table-edit" (click)="editProject(i)">Edit</button>
+            </td>
+            <td>
+              <button class="projects__table-delete" (click)="deleteProject(i)">Delete</button>
+            </td>
+          </ng-container>
+          <ng-template #editMode>
+            <td>{{i + 1}}</td>
+            <td><input formControlName="title"></td>
+            <td><input formControlName="subtitleUA"></td>
+            <td><input formControlName="subtitleEN"></td>
+            <td><input formControlName="square"></td>
+            <td><input formControlName="wallMaterialUA"></td>
+            <td><input formControlName="wallMaterialEN"></td>
+            <td><input formControlName="additionalInfoUA"></td>
+            <td><input formControlName="additionalInfoEN"></td>
+            <td>
+              <input formControlName="imgURL" #img>
+              <input type="file" (change)="upload($event, i)">
+              <img [src]="img.value" width="100px">
+            </td>
+            <td>
+              <button class="projects__table-save" (click)="updateProjectData(i)">Save</button>
+            </td>
+            <td>
+              <button class="projects__table-delete" (click)="deleteProject(i)">Delete</button>
+            </td>
+          </ng-template>
+        </tr>
+      <tr *ngIf="isAddingMode">
+        <td>{{projects.length + 1}}</td>
+        <td><input formControlName="title"></td>
+        <td><input formControlName="subtitleUA"></td>
+        <td><input formControlName="subtitleEN"></td>
+        <td><input formControlName="square"></td>
+        <td><input formControlName="wallMaterialUA"></td>
+        <td><input formControlName="wallMaterialEN"></td>
+        <td><input formControlName="additionalInfoUA"></td>
+        <td><input formControlName="additionalInfoEN"></td>
+        <td>
+          <input formControlName="imgURL" #img>
+          <input type="file" (change)="uploadForNew($event, projects.length)">
+          <img [src]="img.value" width="100px">
+        </td>
+        <td>
+          <button (click)="addNewProject(projects.length)">Save</button>
+        </td>
+        <td>
+          <button>Delete</button>
+        </td>
       </tr>
-      <tr *ngFor="let project of projects; let i = index">
-        <ng-container *ngIf="!project.isEditing; else editMode">
-          <td>{{project.title}}</td>
-          <td>{{project.subtitleUA}}</td>
-          <td>{{project.subtitleEN || '---'}}</td>
-          <td>{{project.square}}</td>
-          <td>{{project.wallMaterialUA}}</td>
-          <td>{{project.wallMaterialEN || '---'}}</td>
-          <td>{{project.additionalInfoUA}}</td>
-          <td>{{project.additionalInfoEN || '---'}}</td>
-          <td><img [src]="project.imgURL" width="100px"></td>
-          <td><button (click)="editProject(i)">Edit</button></td>
-          <td><button>Delete</button></td>
-        </ng-container>
-        <ng-template #editMode>
-          <td><input formControlName="title"></td>
-          <td><input formControlName="subtitleUA"></td>
-          <td><input formControlName="subtitleEN"></td>
-          <td><input formControlName="square"></td>
-          <td><input formControlName="wallMaterialUA"></td>
-          <td><input formControlName="wallMaterialEN"></td>
-          <td><input formControlName="additionalInfoUA"></td>
-          <td><input formControlName="additionalInfoEN"></td>
-          <td><input formControlName="imgURL"></td>
-          <td><button (click)="updateProjectData(i)">Save</button></td>
-          <td><button>Delete</button></td>
-        </ng-template>
-      </tr>
+      </tbody>
     </table>
   </form>
+  <button class="projects__add-project" *ngIf="!isAddingMode" (click)="isAddingMode = true">+ Add new project</button>
 </section>
-<section class="backgrounds">
 
+<section class="phone">
+  <h2>Phone Number:</h2>
+  <ng-container *ngIf="!isEditPhoneMode; else template">
+    <div class="d-flex phone__edit">
+      <p>{{phoneNumber}}</p>
+      <button class="projects__table-edit" (click)="isEditPhoneMode = true">Edit</button>
+    </div>
+  </ng-container>
+  <ng-template #template>
+    <div class="d-flex phone__edit">
+      <input type="text" #phone value="{{phoneNumber}}">
+      <button class="projects__table-save"  (click)="updatePhoneNumber(phone.value)">Save</button>
+    </div>
+  </ng-template>
+</section>
+
+<section class="backgrounds">
+  <div class="d-flex backgrounds__header">
+    <h2>Зображення головного екрану:</h2>
+    <div class="backgrounds__input">
+      <input id="myFile" class="backgrounds__add-background" type="file" (change)="addBackground($event)">
+      <label for="myFile">Додати background</label>
+    </div>
+  </div>
+  <div class="backgrounds__items">
+    <div class="backgrounds__item" *ngFor="let bg of homeScreenBackgrounds">
+      <img [src]="bg" width="400px">
+      <button class="projects__table-delete" (click)="deleteBackground(bg)">Delete</button>
+    </div>
+  </div>
 </section>

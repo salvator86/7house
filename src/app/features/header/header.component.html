@@ -6,8 +6,8 @@
       <div class="header__tools-block">
         <app-select-language section="header"></app-select-language>
       </div>
-      <a class="header__tools-phone" href="tel:+380950059025">+38 (095) 005 90 25</a>
+      <a class="header__tools-phone" href="tel:{{firebaseService.phoneNumber | async}}">{{firebaseService.phoneNumber | async}}</a>
     </div>
-    <button (click)="toggleIsMenuActive()" class="header__burger-button"><span [class.active]="isMenuActive"></span></button>
+    <button (click)="toggleIsMenuActive()" class="header__burger-button"><span [class.active]="isMenuOpen"></span></button>
   </nav>
 </header>

@@ -1,24 +1,30 @@
 import {inject, Injectable} from '@angular/core';
-import {finalize, Observable, Subject} from "rxjs";
+import {finalize, from, Observable, Subject} from "rxjs";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {Project} from "../../models/project";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
+import {AngularFireAuth} from "@angular/fire/compat/auth";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
+  isLogged: boolean = false;
+
   db: AngularFireDatabase = inject(AngularFireDatabase);
-  // fireStorage: AngularFireStorage = inject(AngularFireStorage);
+  fireStorage: AngularFireStorage = inject(AngularFireStorage);
   store: AngularFirestore = inject(AngularFirestore);
+  auth: AngularFireAuth = inject(AngularFireAuth);
 
   projectsCollection: AngularFirestoreCollection<any>;
   backgroundsCollection: AngularFirestoreCollection<any>;
+  phoneCollection: AngularFirestoreCollection<any>
 
   projects: Subject<any[]> = new Subject<any>;
   homeScreenBackgrounds:  Subject<any[]> = new Subject<any>;
+  phoneNumber: Subject<any> = new Subject<any>;
 
   getData(): void {
     this.projectsCollection = this.store.collection('projects');
@@ -30,36 +36,57 @@ export class FirebaseService {
     this.backgroundsCollection.valueChanges().subscribe(data => {
       this.homeScreenBackgrounds.next(data[0].homeScreen);
     })
+
+    this.phoneCollection = this.store.collection('phoneNumber');
+    this.phoneCollection.valueChanges().subscribe(data => {
+      console.log(data[0].phone)
+      this.phoneNumber.next(data[0].phone)
+    })
   }
 
   updateProjects(projects: Project[]): void {
     this.projectsCollection.doc('6VTnsmsGJuXpd9W3OnmH').update({projects})
   }
 
-  // pushFileToStorage(fileUpload: FileUpload): void {
-  //   const filePath = /${fileUpload.file.name};
-  //   const storageRef = this.storage.ref(filePath);
-  //   const uploadTask = this.storage.upload(filePath, fileUpload.file);
-  //
-  //   uploadTask.snapshotChanges().pipe(
-  //     finalize(() => {
-  //       storageRef.getDownloadURL().subscribe(downloadURL => {
-  //         fileUpload.url = downloadURL;
-  //         fileUpload.name = fileUpload.file.name;
-  //         // this.saveFileData(fileUpload);
-  //       });
-  //     })
-  //   ).subscribe();
-  // }
+  pushFileToStorage(fileUpload: any): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const filePath = `/${fileUpload.name}`;
+      const storageRef = this.fireStorage.ref(filePath);
+      const uploadTask = this.fireStorage.upload(filePath, fileUpload);
 
-  // getFiles() {
-  //   const storageRef = this.fireStorage.ref('/');
-  //
-  //   storageRef.listAll().subscribe(result => {
-  //     result.items.forEach(itemRef => {
-  //       console.log('File:', itemRef.fullPath);
-  //     });
-  //   });
-  // }
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            fileUpload.url = downloadURL;
+            this.saveFileData(fileUpload);
+            resolve(downloadURL);
+          }, error => {
+            reject(error);
+          });
+        })
+      ).subscribe();
+    });
+  }
 
+  updateBackgrounds(backgrounds: string[]) {
+    this.backgroundsCollection.doc('k5gJXcL0tek56Aj4Lz4o').update({homeScreen: backgrounds});
+  }
+
+  updatePhone(phone: string) {
+    this.phoneCollection.doc('mewsZw7sHabj0KT3NrvE').update({phone})
+  }
+
+  delete(url: string) {
+    const storageRef = this.fireStorage.refFromURL(url);
+
+    storageRef.delete().subscribe(console.log)
+  }
+
+  signIn(params: any): Observable<any> {
+    return from(this.auth.signInWithEmailAndPassword(params.email, params.password))
+  }
+
+  private saveFileData(fileUpload: any): void {
+    this.db.list('/').push(fileUpload);
+  }
 }
