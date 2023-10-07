@@ -22,8 +22,8 @@ export class LoginPageComponent {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('7house.ua@gmail.com'),
-      password: new FormControl('11061982$Team')
+      email: new FormControl(''),
+      password: new FormControl('')
     })
   }
   login(): void {
