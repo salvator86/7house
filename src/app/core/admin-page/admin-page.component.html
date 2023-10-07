@@ -3,12 +3,12 @@
     <table class="projects__table" border="1px">
       <thead>
         <td>№</td>
-        <td>Project Name</td>
-        <td colspan="2">Subtitle</td>
-        <td>Square</td>
+        <td>Project Name<span class="projects__table--required">*</span></td>
+        <td colspan="2">Subtitle<span class="projects__table--required">*</span></td>
+        <td>Square<span class="projects__table--required">*</span></td>
         <td colspan="2">Wall Material</td>
         <td colspan="2">Additional Info</td>
-        <td>Image</td>
+        <td>Image<span class="projects__table--required">*</span></td>
         <td>Edit</td>
         <td>Delete</td>
       </thead>
@@ -24,7 +24,7 @@
             <td>{{project.wallMaterialEN || '---'}}</td>
             <td>{{project.additionalInfoUA}}</td>
             <td>{{project.additionalInfoEN || '---'}}</td>
-            <td><img [src]="project.imgURL" width="100px"></td>
+            <td><img *ngFor="let image of project.imgURL" [src]="image" width="100px"></td>
             <td>
               <button class="projects__table-edit" (click)="editProject(i)">Edit</button>
             </td>
@@ -43,15 +43,23 @@
             <td><input formControlName="additionalInfoUA"></td>
             <td><input formControlName="additionalInfoEN"></td>
             <td>
-              <input formControlName="imgURL" #img>
-              <input type="file" (change)="upload($event, i)">
-              <img [src]="img.value" width="100px">
+              <div class="projects__table-images">
+                <div *ngFor="let index of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                  <input formControlName="imgURL{{index}}">
+                  <img width="100px" *ngIf="projectForm.get('imgURL' + index)?.value" [src]="projectForm.get('imgURL' + index)?.value" alt="photo">
+                  <input type="file" (change)="uploadProjectFile($event, index, i)">
+                </div>
+              </div>
+              <div class="projects__table-phone-block">
+                <p>Video:</p>
+                <input class="projects__table-phone" formControlName="video">
+              </div>
             </td>
             <td>
               <button class="projects__table-save" (click)="updateProjectData(i)">Save</button>
             </td>
             <td>
-              <button class="projects__table-delete" (click)="deleteProject(i)">Delete</button>
+              <button class="projects__table-cancel" (click)="cancelEditing(i)">Cancel</button>
             </td>
           </ng-template>
         </tr>
@@ -66,15 +74,23 @@
         <td><input formControlName="additionalInfoUA"></td>
         <td><input formControlName="additionalInfoEN"></td>
         <td>
-          <input formControlName="imgURL" #img>
-          <input type="file" (change)="uploadForNew($event, projects.length)">
-          <img [src]="img.value" width="100px">
+          <div class="projects__table-images">
+            <div *ngFor="let index of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+              <input formControlName="imgURL{{index}}">
+              <img width="100px" *ngIf="projectForm.get('imgURL' + index)?.value" [src]="projectForm.get('imgURL' + index)?.value" alt="photo">
+              <input type="file" (change)="uploadForNew($event, index, projects.length)">
+            </div>
+          </div>
+          <div class="projects__table-phone-block">
+            <p>Video:</p>
+            <input class="projects__table-phone" formControlName="video">
+          </div>
         </td>
         <td>
-          <button (click)="addNewProject(projects.length)">Save</button>
+          <button class="projects__table-save" [disabled]="projectForm.invalid" (click)="addNewProject(projects.length)">Save</button>
         </td>
         <td>
-          <button>Delete</button>
+          <button class="projects__table-cancel" (click)="cancelAdding()">Cancel</button>
         </td>
       </tr>
       </tbody>

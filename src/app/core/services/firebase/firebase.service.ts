@@ -45,6 +45,7 @@ export class FirebaseService {
   }
 
   updateProjects(projects: Project[]): void {
+    console.log(projects)
     this.projectsCollection.doc('6VTnsmsGJuXpd9W3OnmH').update({projects})
   }
 
@@ -77,9 +78,11 @@ export class FirebaseService {
   }
 
   delete(url: string) {
-    const storageRef = this.fireStorage.refFromURL(url);
+    if(url) {
+      const storageRef = this.fireStorage.refFromURL(url);
 
-    storageRef.delete().subscribe(console.log)
+      storageRef.delete().subscribe(console.log)
+    }
   }
 
   signIn(params: any): Observable<any> {

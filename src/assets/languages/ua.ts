@@ -51,4 +51,6 @@ export const langUa: any = {
   square: "Площа",
   wallMaterial: "Матеріал стін",
   additional: "Додатково",
+  link: "Посилання на відео",
+  goToVideo: "Перейти до відео"
 }

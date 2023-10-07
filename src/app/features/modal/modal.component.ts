@@ -41,6 +41,7 @@ export class ModalComponent implements OnInit {
 
   form: FormGroup;
   private isFirstClickOutside = true;
+  currentImage: number = 0;
 
   get project(): Project {
     return this.projects[this.currentProjectIndex];
@@ -67,16 +68,21 @@ export class ModalComponent implements OnInit {
     return this.translationService.currentLanguage === 'ua' ? ua : en;
   }
 
-  prevProject() {
-    if (this.currentProjectIndex > 0) {
-      this.currenProjectIndexEmitter.emit(this.currentProjectIndex - 1);
+  prevImage() {
+    if (this.currentImage > 0) {
+      // this.currenProjectIndexEmitter.emit(this.currentProjectIndex - 1);
+      this.currentImage = this.currentImage - 1;
     }
   }
 
-  nextProject() {
-    if (this.currentProjectIndex < this.projects.length - 1) {
-      this.currenProjectIndexEmitter.emit(this.currentProjectIndex + 1);
+  nextImage() {
+    if (this.project.imgURL.length + 1 > this.currentImage) {
+      this.currentImage = this.currentImage + 1;
     }
+  }
+
+  calcCountOfExistsImages(): number {
+    return this.project.imgURL.filter(image => image).length - 1;
   }
 
   ngOnInit(): void {

@@ -28,6 +28,13 @@
         border: 3px solid black;
       }
     }
+    &--required {
+      color: red;
+    }
+  }
+  &__table-images {
+    display: flex;
+    gap: 5px;
   }
   &__table-edit {
     @include changeButtons;
@@ -40,11 +47,26 @@
   &__table-save {
     @include changeButtons;
     background-color: #75c391;
+    &[disabled] {
+      cursor: not-allowed;
+    }
+  }
+  &__table-cancel {
+    @include changeButtons;
+    background-color: #7F8B99;
   }
   &__add-project {
     @include changeButtons;
     background-color: #6060f3;
     margin: 10px;
+  }
+  &__table-phone-block {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  &__table-phone {
+    width: 50% !important;
   }
 }
 

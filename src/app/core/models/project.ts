@@ -1,5 +1,5 @@
 export interface Project {
-  imgURL: string;
+  imgURL: string[];
   title: string;
   subtitleUA: string;
   subtitleEN: string;
@@ -8,10 +8,11 @@ export interface Project {
   wallMaterialUA: string;
   additionalInfoEN: string;
   additionalInfoUA: string;
+  video: string;
 }
 
 export interface ProjectTable {
-  imgURL: string;
+  imgURL: string[];
   title: string;
   subtitleUA: string;
   subtitleEN: string;
@@ -20,5 +21,6 @@ export interface ProjectTable {
   wallMaterialUA: string;
   additionalInfoEN: string;
   additionalInfoUA: string;
+  video: string;
   isEditing?: boolean
 }

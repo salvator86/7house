@@ -25,7 +25,15 @@
     <ng-container *ngIf="modal === 'projects'">
       <div class="modal__projects d-flex">
         <div class="modal__project d-flex space-between">
-          <img [src]="project.imgURL" alt="project's picture">
+          <img [src]="project.imgURL[currentImage]" alt="project pictures">
+          <div class="modal__images">
+            <div class="modal__image-list">
+              <ng-container *ngFor="let image of project.imgURL; let i = index">
+                <img *ngIf="project.imgURL[i]" [src]="project.imgURL[i]" alt="project image">
+              </ng-container>
+            </div>
+            <div class="modal__additional-block"></div>
+          </div>
           <div class="modal__project-content d-flex space-between">
             <div>
               <h3>{{project.title}}</h3>
@@ -41,14 +49,20 @@
                 <p class="modal__project-grey-text">{{'additional' | translate}}:</p>
                 <p class="modal__project-info-text">{{getText(project.additionalInfoUA, project.additionalInfoEN)}}</p>
               </div>
+              <ng-container *ngIf="project.video">
+                <div class="d-flex modal__project-content-text">
+                  <p class="modal__project-grey-text">{{'link' | translate}}:</p>
+                  <a [href]="project.video">{{'goToVideo' | translate}}</a>
+                </div>
+              </ng-container>
             </div>
             <div class="modal__buttons">
-              <button (click)="prevProject()"
-                      [disabled]="!currentProjectIndex">
+              <button (click)="prevImage()"
+                      [disabled]="!currentImage">
                 <span></span>
               </button>
-              <button (click)="nextProject()"
-                      [disabled]="currentProjectIndex === projects.length - 1">
+              <button (click)="nextImage()"
+                      [disabled]="currentImage === calcCountOfExistsImages()">
                 <span></span>
               </button>
             </div>
