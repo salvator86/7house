@@ -18,7 +18,7 @@ export class TranslationService {
     return this.languages[this.currentLanguage];
   }
 
-  changeLanguage() {
+  changeLanguage(): void {
     this.currentLanguage = this.currentLanguage === 'ua' ? 'en' : 'ua';
   }
 

@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, inject, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {ButtonContactComponent} from "../../shared/button-contact/button-contact.component";
@@ -13,4 +13,7 @@ import {FirebaseService} from "../../core/services/firebase/firebase.service";
 })
 export class ContactsScreenComponent {
   firebaseService: FirebaseService = inject(FirebaseService)
+
+  @Output() onModalOpen: EventEmitter<any> = new EventEmitter();
+  @Output() modalEmitter: EventEmitter<any> = new EventEmitter();
 }

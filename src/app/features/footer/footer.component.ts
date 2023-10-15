@@ -12,12 +12,10 @@ import {TranslatePipe} from "../../core/pipes/translate.pipe";
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-
-  scrollToServices(section: string) {
-    const servicesSection = document.getElementById(section);
+  scrollToServices(section: string): void {
+    const servicesSection: HTMLElement | null = document.getElementById(section);
     if (servicesSection) {
       servicesSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
 }

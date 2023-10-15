@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
 import {Benefit} from "../../core/models/benefit";
@@ -11,8 +11,7 @@ import {BenefitComponent} from "../benefit/benefit.component";
   templateUrl: './benefits-screen.component.html',
   styleUrls: ['./benefits-screen.component.scss']
 })
-export class BenefitsScreenComponent implements OnInit {
-
+export class BenefitsScreenComponent {
   benefits: Benefit[] = [
     {imgURL: 'assets/images/benefit-photo-1.png', title: 'offer1'},
     {imgURL: 'assets/images/benefit-photo-2.png', title: 'offer2'},
@@ -21,8 +20,4 @@ export class BenefitsScreenComponent implements OnInit {
     {imgURL: 'assets/images/benefit-photo-5.png', title: 'offer5'},
     {imgURL: 'assets/images/benefit-photo-6.png', title: 'offer6'},
   ]
-
-  ngOnInit(): void {
-  }
-
 }

@@ -3,7 +3,7 @@ import {finalize, from, Observable, Subject} from "rxjs";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {Project} from "../../models/project";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
+import {AngularFireDatabase} from "@angular/fire/compat/database";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 
 @Injectable({
@@ -28,17 +28,17 @@ export class FirebaseService {
 
   getData(): void {
     this.projectsCollection = this.store.collection('projects');
-    this.projectsCollection.valueChanges().subscribe(data => {
+    this.projectsCollection.valueChanges().subscribe((data: any[]): void => {
       this.projects.next(data[0].projects);
     })
 
     this.backgroundsCollection = this.store.collection('background');
-    this.backgroundsCollection.valueChanges().subscribe(data => {
+    this.backgroundsCollection.valueChanges().subscribe((data: any[]): void => {
       this.homeScreenBackgrounds.next(data[0].homeScreen);
     })
 
     this.phoneCollection = this.store.collection('phoneNumber');
-    this.phoneCollection.valueChanges().subscribe(data => {
+    this.phoneCollection.valueChanges().subscribe((data: any[]): void => {
       console.log(data[0].phone)
       this.phoneNumber.next(data[0].phone)
     })
@@ -50,13 +50,13 @@ export class FirebaseService {
   }
 
   pushFileToStorage(fileUpload: any): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const filePath = `/${fileUpload.name}`;
+    return new Promise<string>((resolve, reject): void => {
+      const filePath: string = `/${fileUpload.name}`;
       const storageRef = this.fireStorage.ref(filePath);
       const uploadTask = this.fireStorage.upload(filePath, fileUpload);
 
       uploadTask.snapshotChanges().pipe(
-        finalize(() => {
+        finalize((): void => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
             fileUpload.url = downloadURL;
             this.saveFileData(fileUpload);
@@ -69,15 +69,15 @@ export class FirebaseService {
     });
   }
 
-  updateBackgrounds(backgrounds: string[]) {
+  updateBackgrounds(backgrounds: string[]): void {
     this.backgroundsCollection.doc('k5gJXcL0tek56Aj4Lz4o').update({homeScreen: backgrounds});
   }
 
-  updatePhone(phone: string) {
+  updatePhone(phone: string): void {
     this.phoneCollection.doc('mewsZw7sHabj0KT3NrvE').update({phone})
   }
 
-  delete(url: string) {
+  delete(url: string): void {
     if(url) {
       const storageRef = this.fireStorage.refFromURL(url);
 

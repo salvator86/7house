@@ -1,9 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FirebaseService} from "../services/firebase/firebase.service";
-import {Background} from "../models/background";
 import {Project, ProjectTable} from "../models/project";
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {updatePhoneNumber} from "@angular/fire/auth";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-page',
@@ -11,16 +9,16 @@ import {updatePhoneNumber} from "@angular/fire/auth";
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
+
   homeScreenBackgrounds: string[];
   projects: ProjectTable[];
   phoneNumber: string;
   projectForm: FormGroup;
   isAddingMode: boolean = false;
   isEditPhoneMode: boolean = false;
+  private oldFile: string = '';
 
   private firebaseService: FirebaseService = inject(FirebaseService);
-
-  private oldFile: string = ''
 
   constructor(private formBuilder: FormBuilder) {
     this.projectForm = this.formBuilder.group({
@@ -42,11 +40,11 @@ export class AdminPageComponent implements OnInit {
       imgURL8: [''],
       imgURL9: [''],
       imgURL10: [''],
-      video: ['']
+      video: [''],
     });
   }
 
-  editProject(index: number) {
+  editProject(index: number): void {
 
     this.projects = this.projects.map(project => {
       return {
@@ -55,10 +53,9 @@ export class AdminPageComponent implements OnInit {
       }
     });
 
-    const project = this.projects[index];
+    const project: ProjectTable = this.projects[index];
 
-    // Заповнити поля imgURL відповідно до довжини масиву проекту
-    for (let i = 1; i <= 10; i++) { // Це може змінюватися залежно від кількості полів imgURL
+    for (let i = 1; i <= 10; i++) {
       const imgURLControlName = `imgURL${i}`;
       if (project.imgURL && project.imgURL.length >= i) {
         this.projectForm.get(imgURLControlName)?.setValue(project.imgURL[i - 1]);
@@ -80,15 +77,12 @@ export class AdminPageComponent implements OnInit {
       video: project.video
     });
 
-    // Установити флаг isEditing та скинути isAddingMode і oldFile
     project.isEditing = true;
     this.isAddingMode = false;
     this.oldFile = '';
   }
 
-
-
-  updateProjectData(index: number) {
+  updateProjectData(index: number): void {
     this.projects[index].isEditing = false;
 
     this.addNewProject(index)
@@ -96,12 +90,12 @@ export class AdminPageComponent implements OnInit {
     this.deleteOldFile();
   }
 
-  addNewProject(index: number) {
-    const form = this.projectForm;
+  addNewProject(index: number): void {
+    const form: FormGroup<any> = this.projectForm;
 
     const projectImages: string[] = [];
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i: number = 1; i <= 10; i++) {
       projectImages.push(form.get('imgURL' + i)?.value);
     }
 
@@ -118,7 +112,7 @@ export class AdminPageComponent implements OnInit {
       imgURL: [...projectImages]
     };
 
-    const updatedProjects: Project[] = this.projects.map(projectTable => {
+    const updatedProjects: Project[] = this.projects.map((projectTable: ProjectTable): any => {
       return {
         imgURL: [...projectTable.imgURL],
         title: projectTable.title,
@@ -139,14 +133,14 @@ export class AdminPageComponent implements OnInit {
     this.projectForm.reset();
   }
 
-  deleteProject(index: number) {
+  deleteProject(index: number): void {
     if(this.projects[index].imgURL.length) {
-      this.projects[index].imgURL.map(el => this.firebaseService.delete(el))
+      this.projects[index].imgURL.map((el: string) => this.firebaseService.delete(el))
     }
 
     const updatedProjects: Project[] = this.projects
-      .filter((el, i) => i !== index)
-      .map(projectTable => {
+      .filter((el: ProjectTable, i: number): boolean => i !== index)
+      .map((projectTable: ProjectTable) => {
       return {
         imgURL: projectTable.imgURL,
         title: projectTable.title,
@@ -165,10 +159,10 @@ export class AdminPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.firebaseService.homeScreenBackgrounds.subscribe(data => {
+    this.firebaseService.homeScreenBackgrounds.subscribe((data: any[]): void => {
       this.homeScreenBackgrounds = data;
     });
-    this.firebaseService.projects.subscribe(data => {
+    this.firebaseService.projects.subscribe((data: any[]): void => {
       this.projects = data;
     })
     this.firebaseService.phoneNumber.subscribe(data => {
@@ -176,46 +170,40 @@ export class AdminPageComponent implements OnInit {
     })
   }
 
-  upload(event: any, index: number) {
-    this.oldFile = this.projectForm.get('imgURL')?.value;
-    this.firebaseService.pushFileToStorage(event.target.files[0])
-      .then(url => this.projectForm.get('imgURL')?.setValue(url))
-      .finally(() => this.updateProjectData(index))
-  }
-
-  uploadForNew(event: any, index: number, i: number) {
+  uploadForNew(event: any, index: number, i: number): void {
     this.oldFile = this.projectForm.get('imgURL' + index)?.value;
     this.firebaseService.pushFileToStorage(event.target.files[0])
       .then(url => this.projectForm.get('imgURL' + index)?.setValue(url))
       .finally(() => this.addNewProject(i))
   }
 
-  deleteOldFile() {
+  deleteOldFile(): void {
     if(this.oldFile) {
       this.firebaseService.delete(this.oldFile)
     }
   }
 
-  deleteBackground(bg: string) {
+  deleteBackground(bg: string): void {
     this.firebaseService.delete(bg)
-    this.firebaseService.updateBackgrounds([...this.homeScreenBackgrounds.filter(el => el !== bg)])
+    this.firebaseService.updateBackgrounds([...this.homeScreenBackgrounds
+      .filter((el: string) => el !== bg)])
   }
 
-  addBackground(file: any) {
+  addBackground(file: any): void {
     const bg = file.target.files[0];
-    this.firebaseService.pushFileToStorage(bg).then(url => {
+    this.firebaseService.pushFileToStorage(bg).then((url: string): void => {
       const backgrounds: string[] = [...this.homeScreenBackgrounds, url];
 
       this.firebaseService.updateBackgrounds(backgrounds);
     })
   }
 
-  updatePhoneNumber(phone: any) {
+  updatePhoneNumber(phone: any): void {
     this.firebaseService.updatePhone(phone);
     this.isEditPhoneMode = false;
   }
 
-  uploadProjectFile(event: any, index: number, i: number) {
+  uploadProjectFile(event: any, index: number, i: number): void {
     this.oldFile = this.projectForm.get('imgURL' + index)?.value;
     this.firebaseService.pushFileToStorage(event.target.files[0])
       .then(url => this.projectForm.get('imgURL' + index)?.setValue(url))

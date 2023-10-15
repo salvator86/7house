@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Service} from "../../core/models/service";
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
@@ -10,11 +10,6 @@ import {TranslatePipe} from "../../core/pipes/translate.pipe";
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.scss']
 })
-export class ServiceComponent implements OnInit {
-
+export class ServiceComponent {
   @Input() service: Service;
-
-  ngOnInit(): void {
-  }
-
 }

@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <app-button-contact></app-button-contact>
+        <app-button-contact (click)="modalEmitter.emit('form')" (onModalOpen)="onModalOpen.emit()"></app-button-contact>
       </div>
       <div class="contacts__image">
         <img src="assets/images/team.png" alt="photo of team">

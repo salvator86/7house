@@ -1,7 +1,7 @@
 <button class="button"
         (mouseover)="isHover = true"
         (mouseleave)="isHover = false"
-        (click)="onModalOpen.emit()"
+        (click)="test()"
 >
   <div [@contactUs]="isHover && 'over'" class="button-border"></div>
   {{'contactUs' | translate}}

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Benefit} from "../../core/models/benefit";
 import {TranslatePipe} from "../../core/pipes/translate.pipe";
@@ -23,7 +23,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     ])
   ],
 })
-export class BenefitComponent implements OnInit {
+export class BenefitComponent {
 
   @Input() benefit: Benefit;
   isHover: boolean = false;
@@ -34,9 +34,6 @@ export class BenefitComponent implements OnInit {
       'background-size': 'cover',
       'background-position': 'center center'
     }
-  }
-
-  ngOnInit(): void {
   }
 
 }

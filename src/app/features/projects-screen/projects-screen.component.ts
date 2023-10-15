@@ -13,9 +13,9 @@ import {ProjectComponent} from "../project/project.component";
 export class ProjectsScreenComponent implements AfterViewInit {
 
   @Input() projects: any;
-  @Output() modalEmitter = new EventEmitter();
-  @Output() onModalOpen = new EventEmitter();
-  @Output() currenProjectIndexEmitter = new EventEmitter();
+  @Output() modalEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() onModalOpen: EventEmitter<any> = new EventEmitter();
+  @Output() currenProjectIndexEmitter: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('itemsContainer', { static: false }) itemsContainer:  ElementRef<HTMLDivElement>;
 
@@ -30,30 +30,32 @@ export class ProjectsScreenComponent implements AfterViewInit {
   }
 
   scrollLeft(): void {
-    const container = this.itemsContainer.nativeElement;
-    const currentScrollLeft = container.scrollLeft;
-    const newScrollLeft = Math.max(0, currentScrollLeft - this.maxScrollLeft);
+    const container: HTMLDivElement = this.itemsContainer.nativeElement;
+    const currentScrollLeft: number = container.scrollLeft;
+    const newScrollLeft: number = Math
+      .max(0, currentScrollLeft - this.maxScrollLeft);
     this.renderer.setProperty(container, 'scrollLeft', newScrollLeft);
     this.updateScrollButtons();
   }
 
   scrollRight(): void {
     console.log('check');
-    const container = this.itemsContainer.nativeElement;
-    const currentScrollLeft = container.scrollLeft;
-    const newScrollLeft = Math.min(container.scrollWidth - container.clientWidth, currentScrollLeft + this.maxScrollLeft);
+    const container: HTMLDivElement = this.itemsContainer.nativeElement;
+    const currentScrollLeft: number = container.scrollLeft;
+    const newScrollLeft: number = Math
+      .min(container.scrollWidth - container.clientWidth, currentScrollLeft + this.maxScrollLeft);
     this.renderer.setProperty(container, 'scrollLeft', newScrollLeft);
     this.updateScrollButtons();
   }
 
   updateScrollButtons(): void {
-    const container = this.itemsContainer.nativeElement;
+    const container: HTMLDivElement = this.itemsContainer.nativeElement;
 
     this.isLeftButtonDisabled = container.scrollLeft === 0;
     this.isRightButtonDisabled = container.scrollLeft === (container.scrollWidth - container.clientWidth);
   }
 
-  openProjectsModal(index: number) {
+  openProjectsModal(index: number): void {
     this.modalEmitter.emit('projects');
     this.onModalOpen.emit();
     this.currenProjectIndexEmitter.emit(index);

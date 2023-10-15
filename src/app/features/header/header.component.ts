@@ -13,10 +13,10 @@ import {AsyncPipe} from "@angular/common";
   imports: [TranslatePipe, NavigationComponent, SelectLanguageComponent, AsyncPipe]
 })
 export class HeaderComponent {
-  @Input() isMenuOpen: boolean;
-  @Output() openMenuEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  isMenuActive: boolean = false;
+  @Input() isMenuOpen: boolean;
+
+  @Output() openMenuEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   firebaseService: FirebaseService = inject(FirebaseService)
 

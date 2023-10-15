@@ -12,11 +12,9 @@ import {TeammateComponent} from "../teammate/teammate.component";
   styleUrls: ['./team-screen.component.scss']
 })
 export class TeamScreenComponent {
-
   team: Team[] = [
     {imgURL: 'assets/images/stanislav.png', name: "stanislav", responsibility: 'stanislavResponsibilities'},
     {imgURL: 'assets/images/irina.png', name: "irina", responsibility: 'irinaResponsibilities'},
     {imgURL: 'assets/images/mikhailo.png', name: "mikhailo", responsibility: 'mikhailoResponsibilities'}
   ]
-
 }

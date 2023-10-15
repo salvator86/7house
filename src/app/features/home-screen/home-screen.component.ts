@@ -14,8 +14,8 @@ import {ButtonContactComponent} from "../../shared/button-contact/button-contact
 export class HomeScreenComponent implements OnInit, OnDestroy {
 
   @Input() homeScreenBackgrounds: any;
-  @Output() onModalOpen = new EventEmitter();
-  @Output() modalEmitter = new EventEmitter();
+  @Output() onModalOpen: EventEmitter<any> = new EventEmitter();
+  @Output() modalEmitter: EventEmitter<any> = new EventEmitter();
 
   currentBackground: number = 0;
   timer: number = 700000;
@@ -42,9 +42,9 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
     this.startInterval();
   }
 
-  startInterval() {
+  startInterval(): void {
     clearInterval(this.interval)
-    this.interval = setInterval(() => {
+    this.interval = setInterval((): void => {
       if (this.homeScreenBackgrounds.length - 1 === this.currentBackground) {
         this.currentBackground = 0;
       } else {
@@ -60,21 +60,21 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
     }
   }
 
-  scrollToServices(section: string) {
-    const servicesSection = document.getElementById(section);
+  scrollToServices(section: string): void {
+    const servicesSection: HTMLElement | null = document.getElementById(section);
     if (servicesSection) {
       this.isMenuOpened = false;
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
+      servicesSection?.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.homeScreenBackgrounds.length > 1) {
       this.startInterval();
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     clearInterval(this.interval);
   }
 }

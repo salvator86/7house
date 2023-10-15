@@ -1,5 +1,4 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
-import {AppModule} from "../../app.module";
+import {Component, inject, OnInit} from '@angular/core';
 import {TranslatePipe} from "../pipes/translate.pipe";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {HomeScreenComponent} from "../../features/home-screen/home-screen.component";
@@ -50,19 +49,19 @@ export class HomePageComponent implements OnInit {
     this.modal = '';
   }
 
-  setModal($event: string) {
+  setModal($event: string): void {
     this.modal = $event;
   }
 
-  setProjectIndex(index: number) {
+  setProjectIndex(index: number): void {
     this.currentProjectIndex = index;
   }
 
   ngOnInit(): void {
-    this.firebaseService.homeScreenBackgrounds.subscribe(data => {
+    this.firebaseService.homeScreenBackgrounds.subscribe((data: any[]): void => {
       this.homeScreenBackgrounds = data;
     });
-    this.firebaseService.projects.subscribe(data => {
+    this.firebaseService.projects.subscribe((data: any[]): void => {
       this.projects = data;
     })
   }

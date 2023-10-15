@@ -15,6 +15,7 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {Project} from "../../core/models/project";
 import {TranslationService} from "../../core/services/translation/translation.service";
 import {ProjectComponent} from "../project/project.component";
+import {EmailService} from "../../core/services/email/email.service";
 
 @Component({
   selector: 'app-modal-contact',
@@ -26,6 +27,7 @@ import {ProjectComponent} from "../project/project.component";
 export class ModalComponent implements OnInit {
 
   private translationService: TranslationService = inject(TranslationService);
+  private emailService: EmailService = inject(EmailService);
 
   @ViewChild('modalBlock') elementRef: ElementRef;
 
@@ -34,13 +36,13 @@ export class ModalComponent implements OnInit {
   @Input() projects: Project[];
   @Input() currentProjectIndex: number;
 
-  @Output() modalEmitter = new EventEmitter();
-  @Output() onOpenEmitter = new EventEmitter();
-  @Output() onCloseEmitter = new EventEmitter();
-  @Output() currenProjectIndexEmitter = new EventEmitter();
+  @Output() modalEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() onOpenEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() onCloseEmitter: EventEmitter<any> = new EventEmitter();
+  @Output() currenProjectIndexEmitter: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
-  private isFirstClickOutside = true;
+  private isFirstClickOutside: boolean = true;
   currentImage: number = 0;
 
   get project(): Project {
@@ -59,30 +61,29 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  sendForm(form: any) {
+  sendForm(form: any): void {
     this.modalEmitter.emit('thanks');
-    console.log(form)
+    this.emailService.sendEmail(form.value);
   }
 
   getText(ua: string, en: string): string {
     return this.translationService.currentLanguage === 'ua' ? ua : en;
   }
 
-  prevImage() {
+  prevImage(): void {
     if (this.currentImage > 0) {
-      // this.currenProjectIndexEmitter.emit(this.currentProjectIndex - 1);
       this.currentImage = this.currentImage - 1;
     }
   }
 
-  nextImage() {
+  nextImage(): void {
     if (this.project.imgURL.length + 1 > this.currentImage) {
       this.currentImage = this.currentImage + 1;
     }
   }
 
   calcCountOfExistsImages(): number {
-    return this.project.imgURL.filter(image => image).length - 1;
+    return this.project.imgURL.filter((image: string) => image).length - 1;
   }
 
   ngOnInit(): void {
