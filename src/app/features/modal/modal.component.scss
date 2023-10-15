@@ -115,6 +115,15 @@
       weight: 600;
       family: 'Mont', sans-serif;
     }
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      color: white;
+    }
     &[disabled] {
       cursor: auto;
       opacity: 0.5;

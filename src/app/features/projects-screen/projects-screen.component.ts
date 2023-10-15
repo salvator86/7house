@@ -39,7 +39,6 @@ export class ProjectsScreenComponent implements AfterViewInit {
   }
 
   scrollRight(): void {
-    console.log('check');
     const container: HTMLDivElement = this.itemsContainer.nativeElement;
     const currentScrollLeft: number = container.scrollLeft;
     const newScrollLeft: number = Math

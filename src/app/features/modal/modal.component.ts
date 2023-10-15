@@ -15,7 +15,6 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {Project} from "../../core/models/project";
 import {TranslationService} from "../../core/services/translation/translation.service";
 import {ProjectComponent} from "../project/project.component";
-import {EmailService} from "../../core/services/email/email.service";
 
 @Component({
   selector: 'app-modal-contact',
@@ -27,7 +26,6 @@ import {EmailService} from "../../core/services/email/email.service";
 export class ModalComponent implements OnInit {
 
   private translationService: TranslationService = inject(TranslationService);
-  private emailService: EmailService = inject(EmailService);
 
   @ViewChild('modalBlock') elementRef: ElementRef;
 
@@ -54,17 +52,15 @@ export class ModalComponent implements OnInit {
     if (this.isFirstClickOutside) {
       this.isFirstClickOutside = false;
     } else {
-      if (!this.elementRef.nativeElement.contains(event.target) && this.isModalOpen) {
+      if (!this.elementRef.nativeElement.contains(event.target) && this.isModalOpen && this.modal !== 'thanks') {
         this.onCloseEmitter.emit();
         this.form.reset();
       }
     }
   }
 
-  sendForm(form: any): void {
-    this.emailService.sendEmail(form.value).subscribe( {
-      next: () => this.modalEmitter.emit('thanks'),
-    });
+  sendForm(): void {
+    this.modalEmitter.emit('thanks');
   }
 
   getText(ua: string, en: string): string {
@@ -96,4 +92,7 @@ export class ModalComponent implements OnInit {
     })
   }
 
+  get message(): string {
+    return this.form.value.name + ' ' + this.form.value.phone;
+  }
 }

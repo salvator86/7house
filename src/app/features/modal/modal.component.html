@@ -3,7 +3,7 @@
     <ng-container *ngIf="modal === 'form'">
       <div class="modal__content">
         <h3>{{'contactUs' | translate}}</h3>
-        <form class="modal__form" [formGroup]="form" (ngSubmit)="sendForm(form)">
+        <form class="modal__form" [formGroup]="form">
           <div class="modal__fieldset">
             <label for="name">{{'howToNameYou' | translate}}</label>
             <input type="text" id="name" formControlName="name" placeholder="{{'yourName' | translate}}">
@@ -12,7 +12,17 @@
             <label for="phone">{{'yourPhoneNumber' | translate}}</label>
             <input type="text" id="phone" formControlName="phone" placeholder="+380" maxlength="13">
           </div>
-          <button class="modal__button-send" type="submit" [disabled]="form.invalid">{{'send' |  translate}}</button>
+          <button class="modal__button-send"
+                  type="submit"
+                  [disabled]="form.invalid"
+                  (click)="sendForm()"
+          >
+            <ng-container *ngIf="form.invalid">{{'send' |  translate}}</ng-container>
+            <ng-container *ngIf="form.valid">
+              <a
+                 href="mailto:7house.ua@gmail.com?subject=Зателефонувати&body={{message}}">{{'send' |  translate}}</a>
+            </ng-container>
+          </button>
         </form>
       </div>
     </ng-container>

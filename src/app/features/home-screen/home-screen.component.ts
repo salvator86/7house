@@ -18,13 +18,12 @@ export class HomeScreenComponent implements OnInit, OnDestroy {
   @Output() modalEmitter: EventEmitter<any> = new EventEmitter();
 
   currentBackground: number = 0;
-  timer: number = 700000;
+  timer: number = 8000;
   interval: ReturnType<typeof setInterval>;
   isMenuOpened: boolean = false;
 
   onMenuOpen(): void {
     this.isMenuOpened = !this.isMenuOpened;
-    console.log(this.isMenuOpened);
   }
 
   changeToPrevBackground(): void {

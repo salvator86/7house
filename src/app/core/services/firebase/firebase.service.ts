@@ -39,13 +39,11 @@ export class FirebaseService {
 
     this.phoneCollection = this.store.collection('phoneNumber');
     this.phoneCollection.valueChanges().subscribe((data: any[]): void => {
-      console.log(data[0].phone)
       this.phoneNumber.next(data[0].phone)
     })
   }
 
   updateProjects(projects: Project[]): void {
-    console.log(projects)
     this.projectsCollection.doc('6VTnsmsGJuXpd9W3OnmH').update({projects})
   }
 
@@ -77,11 +75,11 @@ export class FirebaseService {
     this.phoneCollection.doc('mewsZw7sHabj0KT3NrvE').update({phone})
   }
 
-  delete(url: string): void {
+  deleteFile(url: string): void {
     if(url) {
       const storageRef = this.fireStorage.refFromURL(url);
 
-      storageRef.delete().subscribe(console.log)
+      storageRef.delete().subscribe()
     }
   }
 

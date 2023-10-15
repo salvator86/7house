@@ -31,8 +31,7 @@ export class ButtonContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  test() {
-    console.log('testik')
+  openModal() {
     this.onModalOpen.emit()
   }
 }

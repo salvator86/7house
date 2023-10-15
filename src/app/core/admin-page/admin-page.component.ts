@@ -135,7 +135,7 @@ export class AdminPageComponent implements OnInit {
 
   deleteProject(index: number): void {
     if(this.projects[index].imgURL.length) {
-      this.projects[index].imgURL.map((el: string) => this.firebaseService.delete(el))
+      this.projects[index].imgURL.map((el: string) => this.firebaseService.deleteFile(el))
     }
 
     const updatedProjects: Project[] = this.projects
@@ -179,12 +179,12 @@ export class AdminPageComponent implements OnInit {
 
   deleteOldFile(): void {
     if(this.oldFile) {
-      this.firebaseService.delete(this.oldFile)
+      this.firebaseService.deleteFile(this.oldFile)
     }
   }
 
   deleteBackground(bg: string): void {
-    this.firebaseService.delete(bg)
+    this.firebaseService.deleteFile(bg)
     this.firebaseService.updateBackgrounds([...this.homeScreenBackgrounds
       .filter((el: string) => el !== bg)])
   }
