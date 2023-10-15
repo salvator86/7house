@@ -62,8 +62,9 @@ export class ModalComponent implements OnInit {
   }
 
   sendForm(form: any): void {
-    this.modalEmitter.emit('thanks');
-    this.emailService.sendEmail(form.value);
+    this.emailService.sendEmail(form.value).subscribe( {
+      next: () => this.modalEmitter.emit('thanks'),
+    });
   }
 
   getText(ua: string, en: string): string {
